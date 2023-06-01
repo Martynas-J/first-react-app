@@ -5,7 +5,7 @@ function ContactUs() {
     return (
         <div className="container-xxl">
             <div className="row align-items-center gx-5 m-0 p-0">
-                <FindUs />
+                <FindUs title = "Find Us"/>
                 <Map />
             </div>
         </div>

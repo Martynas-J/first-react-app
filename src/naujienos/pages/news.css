@@ -1,0 +1,493 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+    margin: 0;
+
+}
+
+.container {
+    max-width: 1900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+header div,
+header ul {
+    display: inline;
+    padding: unset;
+}
+
+header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    padding-top: 2%;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.384);
+    margin-bottom: 50px;
+}
+
+header li {
+    list-style: none;
+    display: inline;
+}
+
+header li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+header a {
+    color: black;
+    text-decoration: none;
+    display: inline;
+}
+
+header a:hover {
+    color: rgb(195, 201, 206);
+}
+
+body header>.container {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.mygtukas a {
+    display: inline;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: aliceblue;
+    border-radius: 20px;
+    background-color: blue;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+header .mygtukas a:hover {
+    background-color: rgb(102, 102, 245);
+}
+
+.button-large {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+    padding: 25px 35px;
+    border-radius: 8px;
+}
+
+.button-large::after {
+    content: ' ';
+    width: 19px;
+    height: 33px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='33'%3E%3Cpath d='M2.535 32.526L.033 30.024l13.76-13.761L.034 2.502 2.535-.001 18.8 16.263z' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-position: 50%;
+}
+
+.section-title {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-wrapper {
+    /* display: flex;  column-gap: 30px; */
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 30px;
+    margin-bottom: 50px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    /* width: calc(100% / 3 * 2); */
+}
+
+.main-news {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+    margin-bottom: 30px;
+}
+
+.main-news .news-item {
+    background-color: white;
+}
+
+.main-news .news-item .image-wrapper {
+    height: 250px;
+}
+
+.main-news .news-item .news-content {
+    padding: 30px;
+}
+
+.main-news .news-item .news-content .news-title {
+    font-size: 30px;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: black;
+}
+
+.news-item .news-category {
+    text-transform: uppercase;
+    color: blue;
+}
+
+.news-item .news-content .news-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.secondary-news {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.secondary-news .news-item a {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    column-gap: 15px;
+}
+
+.secondary-news .news-item .image-wrapper {
+    height: 80px;
+}
+
+.video-extra-text {
+    display: block;
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.video-wrapper {
+    height: 430px;
+}
+
+.video-wrapper iframe {
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar-content {
+    display: grid;
+    row-gap: 40px;
+}
+
+.podcasts-wrapper {
+    display: grid;
+    gap: 20px;
+}
+
+.podcast-controls {
+    background-color: black;
+    display: grid;
+    grid-template-rows: 70px;
+    grid-template-columns: 70px 1fr 70px;
+    border: 2px solid black;
+}
+
+.podcast-controls .podcast-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.podcast-controls .podcast-length {
+    color: white;
+    display: grid;
+    place-items: center;
+}
+
+.podcast-controls .podcast-play {
+    border: none;
+    background-color: white;
+}
+
+.podcast-content {
+    background-color: white;
+    padding: 15px;
+}
+
+.podcast-content .podcast-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.events-list {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 30px;
+}
+
+.event a {
+    text-decoration: none;
+}
+
+.event img {
+    display: block;
+}
+
+.event .event-content {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.event .event-content .event-title {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.event-date {
+    width: 70px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: -45px;
+    margin-bottom: 10px;
+}
+
+.event-day {
+    background-color: white;
+    display: block;
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.event-month {
+    display: block;
+    background-color: #ff00e9;
+    text-align: center;
+    padding: 3px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+
+
+
+footer li {
+    list-style: none;
+    display: inline;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    display: inline;
+}
+
+.apacia {
+    background-color: black;
+    padding-top: 140px;
+    font-family: Bw Nista Int, Arial, sans-serif;
+    padding-bottom: 135px;
+}
+
+.apacia-vidus {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.logo {
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.apacia-meniu {
+    width: 30%;
+    padding-right: 30px;
+}
+
+.apacia-meniu-desine {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.apacia ul {
+    margin: 0;
+    padding: 0;
+}
+
+.apacia-meniu li {
+    display: block;
+    padding-bottom: 10px;
+
+}
+
+.adresai {
+    max-width: 180px;
+}
+
+.miestas {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.adresai .adresas {
+    padding-bottom: 20px;
+}
+
+.apacia a {
+    color: darkgray
+}
+
+.linkai {
+    width: 30%;
+}
+
+.linkai li {
+    padding-right: 10px;
+}
+
+.apacia-apacia {
+    display: flex;
+    font-size: 12px;
+    padding-top: 250px;
+    color: darkgray
+}
+
+.apacia-apacia div:first-child {
+    width: 65%;
+
+}
+
+@media screen and (max-width:1366px) {
+    .container {
+        max-width: 1366px;
+    }
+}
+
+@media screen and (max-width:1160px) {
+
+    header ul li,
+    .mygtukas {
+        display: none;
+    }
+
+    header .sarasas:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background: url(https://storage.googleapis.com/proudcity/santaclaracountycacities/uploads/2021/07/333-3335189_menu-three-horizontal-lines-symbol-free-icon-logos-with-horizontal-lines.jpg) no-repeat;
+        position: absolute;
+        margin-left: -30px;
+        background-size: 40px;
+    }
+
+    .main-news {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .main-news .news-item {
+        width: 100%;
+    }
+
+    .sidebar-content,
+    .sidebar-content>.podcasts-wrapper {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media screen and (max-width:1060px) {
+    .secondary-news {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .secondary-news .news-item {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width:1000px) {
+    .content-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+    .content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .secondary-news,
+    .podcasts-wrapper .podcasts-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* gap: 30px; */
+        margin-bottom: 30px;
+    }
+
+    .section-title {
+        margin-top: 20px;
+    }
+
+    .events-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .events-list .event:first-child {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (max-width: 685px) {
+    .secondary-news {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .secondary-news,
+    .podcasts-wrapper .podcasts-wrapper,
+    .events-list {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .event,
+    .podcast {
+        width: 100%;
+    }
+}

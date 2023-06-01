@@ -1,12 +1,11 @@
 import Shop from "./Shop"
-import { DATA } from "./config"
+import { DATA } from "./Data"
 
-function FindUs() {
+function FindUs(props) {
     return (
         <div className="col-md-12 col-xl-6 col-lg-8 order-lg-0 order-md-3">
             <div className="row g-3">
-                <h1 className="col-12 py-5 ps-0 fs-2">Find Us</h1>
-
+                <h1 className="col-12 py-5 ps-0 fs-2">{props.title}</h1>
                 {DATA.map((item, index) => (
                     <Shop
                         key={index}
@@ -15,7 +14,6 @@ function FindUs() {
                         email={item.email}
                         address={item.address}
                     />
-
                 ))}
 
             </div>
