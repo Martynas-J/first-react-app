@@ -1,5 +1,5 @@
-import FindUs from "./FindUs"
-import Map from "./Map"
+import FindUs from "../components/contactPage/FindUs"
+import Map from "../components/contactPage/Map"
 
 function ContactUs() {
     return (

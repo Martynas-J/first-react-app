@@ -1,7 +1,7 @@
-import ButtonLarge from "./ButtonLarge"
-import { EVENTS_DATA } from "./Data"
-import Event from "./Event"
-
+import ButtonLarge from "../ButtonLarge/ButtonLarge"
+import { EVENTS_DATA } from "../Data"
+import Event from "../Event/Event"
+import './EventsWrapper.css'
 
 function EventsWrapper(props) {
     return (

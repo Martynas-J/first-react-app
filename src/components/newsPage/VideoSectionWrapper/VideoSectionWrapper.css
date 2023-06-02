@@ -1,0 +1,26 @@
+.section-title {
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.video-wrapper {
+    height: 430px;
+}
+
+.video-wrapper iframe {
+    height: 100%;
+    width: 100%;
+}
+.video-extra-text {
+    display: block;
+    font-size: 28px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 770px) {
+
+    .section-title {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,34 @@
+.podcast-controls {
+    background-color: black;
+    display: grid;
+    grid-template-rows: 70px;
+    grid-template-columns: 70px 1fr 70px;
+    border: 2px solid black;
+}
+
+.podcast-controls .podcast-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.podcast-controls .podcast-length {
+    color: white;
+    display: grid;
+    place-items: center;
+}
+
+.podcast-controls .podcast-play {
+    border: none;
+    background-color: white;
+}
+
+.podcast-content {
+    background-color: white;
+    padding: 15px;
+}
+
+.podcast-content .podcast-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}

@@ -1,0 +1,18 @@
+.button-large {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    font-size: 35px;
+    text-decoration: none;
+    color: black;
+    padding: 25px 35px;
+    border-radius: 8px;
+}
+
+.button-large::after {
+    content: ' ';
+    width: 19px;
+    height: 33px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='19' height='33'%3E%3Cpath d='M2.535 32.526L.033 30.024l13.76-13.761L.034 2.502 2.535-.001 18.8 16.263z' fill-rule='evenodd'/%3E%3C/svg%3E");
+    background-position: 50%;
+}

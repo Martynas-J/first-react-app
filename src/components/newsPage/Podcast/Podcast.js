@@ -1,3 +1,4 @@
+import './Podcast.css'
 function Podcast(props) {
     let {podcastImageSrc, podcastLength, podcastTitle, podcastDate} = props
     return (

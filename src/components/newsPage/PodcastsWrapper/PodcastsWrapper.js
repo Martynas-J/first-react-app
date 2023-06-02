@@ -1,5 +1,6 @@
-import { PODCASTS_DATA } from "./Data"
-import Podcast from "./Podcast"
+import { PODCASTS_DATA } from "../Data"
+import Podcast from "../Podcast/Podcast"
+import './VideoSectionWrapper.css'
 
 function PodcastsWrapper(props) {
     return (

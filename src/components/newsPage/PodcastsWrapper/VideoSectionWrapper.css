@@ -1,0 +1,14 @@
+.podcasts-wrapper {
+    display: grid;
+    gap: 20px;
+}
+
+@media screen and (max-width:1160px) {
+
+    .sidebar-content,
+    .sidebar-content>.podcasts-wrapper {
+        display: block;
+        margin-bottom: 30px;
+    }
+
+}

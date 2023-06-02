@@ -1,0 +1,19 @@
+.events-list {
+    display: grid;
+    row-gap: 40px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 770px) {
+
+    .events-list {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+        margin-bottom: 30px;
+    }
+
+    .events-list .event:first-child {
+        grid-column: span 2;
+    }
+}
+

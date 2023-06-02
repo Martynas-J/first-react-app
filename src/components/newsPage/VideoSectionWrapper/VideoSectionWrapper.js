@@ -1,4 +1,5 @@
-import ButtonLarge from "./ButtonLarge"
+import ButtonLarge from "../ButtonLarge/ButtonLarge"
+import './VideoSectionWrapper.css'
 
 function VideoSectionWrapper(props) {
     let { title, link, extraText } = props
