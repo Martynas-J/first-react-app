@@ -3,6 +3,7 @@ import './App.css';
 import News from './pages/NewsPage/NewsPage';
 import ContactUs from './pages/ContactUsPage/ContactUsPage';
 import Blogs from './pages/BlogsPage/BlogsPage';
+import Curses from './pages/CoursesPage/CoursesPage';
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           <li className='navigation-item'>
             <NavLink to='/Blogs' className='navigation-link'>Blogs</NavLink>
           </li>
+          <li className='navigation-item'>
+            <NavLink to='/Courses' className='navigation-link'>Courses</NavLink>
+          </li>
         </ul>
       </nav>
 
@@ -34,6 +38,7 @@ function App() {
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/News' element={<News />} />
         <Route path='/Blogs' element={<Blogs />} />
+        <Route path='/Courses' element={<Curses />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>

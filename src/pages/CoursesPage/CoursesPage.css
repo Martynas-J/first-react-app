@@ -1,0 +1,440 @@
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+}
+
+.img-1 {
+    position: absolute;
+    top: -43px;
+    left: 1100px;
+}
+
+.naujas-img {
+    background-color: white;
+    grid-column: span 3;
+    display: flex;
+    justify-content: space-between;
+    /* background-image: url(/picture/banner.jpg); */
+    background-position: 80% 70%;
+    background-size: 300px;
+    background-repeat: no-repeat;
+}
+
+.img-textas {
+    padding: 25px;
+}
+.naujas-img-desine {
+    background-image: url();  
+
+}
+
+.naujas-img span {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.naujas-img span:first-child {
+    color: rgb(219, 79, 219);
+
+}
+
+
+.wrap {
+    max-width: 1900px;
+    padding: 0 30px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+header div,
+header ul {
+    display: inline;
+    padding: unset;
+}
+
+header {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    padding-top: 2%;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 15px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.384);
+}
+
+li {
+    list-style: none;
+    display: inline;
+}
+
+header li {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    display: inline;
+}
+
+header a:hover {
+    color: rgb(195, 201, 206);
+}
+
+body header>.wrap {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.mygtukas a {
+    display: inline;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: aliceblue;
+    border-radius: 20px;
+    background-color: blue;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+header .mygtukas a:hover {
+    background-color: rgb(102, 102, 245);
+}
+
+.courses button {
+    background-color: white;
+    border: 1px solid blue;
+    color: blue;
+    border-radius: 20px;
+    width: 100%;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    align-items: center;
+}
+
+.button-2 {
+    background-color: blue;
+    border: 1px solid blue;
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    width: 100%;
+    font-size: 75%;
+    text-align: center;
+    padding: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    position: sticky;
+    top: 85px;
+    z-index: 10;
+    display: none;
+}
+
+main .vidurys-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 60px;
+}
+
+main .image-top {
+    grid-column: span 3;
+}
+
+main .vidurys h1 {
+    font-size: 70px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: block;
+}
+
+main .vidurys h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+main .pasirinkimai {
+    background-color: rgb(255, 255, 255);
+    display: block;
+    padding: 45px;
+    height: 500px;
+    top: 110px;
+    position: sticky;
+}
+
+main .pasirinkimai h2 {
+    font-size: 25px;
+    margin-top: 0;
+}
+
+main .pasirinkimai .list-items {
+    padding-bottom: 20px;
+}
+
+main .pasirinkimai label {
+    font-size: 17px;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+main .pasirinkimai select {
+    width: 100%;
+    border-radius: 20px;
+    font-size: 20px;
+    padding: 5px;
+    border: none;
+    background-color: bisque;
+}
+
+main .pasirinkimai input {
+    display: inline;
+    font-size: 50px;
+    margin-right: 15px;
+}
+
+input[type=checkbox] {
+    -ms-transform: scale(1.7);
+    /* IE */
+    -moz-transform: scale(1.7);
+    /* FF */
+    -webkit-transform: scale(1.7);
+    /* Safari and Chrome */
+    -o-transform: scale(1.7);
+    /* Opera */
+    transform: scale(1.7);
+}
+
+
+main .pasirinkimai .block label {
+    display: block;
+}
+
+main .vidurys-right {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+main .vidurys-right a {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    padding: 45px;
+}
+
+main .container-top .img-2 {
+    max-width: 97px;
+}
+
+main .container-top h2 {
+    font-size: 25px;
+}
+
+main .container-top p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+main .container-top span {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: -15px;
+    background-color: rgb(196, 59, 166);
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+main .container-bottom {
+    padding-top: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+main .container-bottom ul {
+    margin: 0;
+    padding: 0;
+}
+
+main .container-bottom ul li.day {
+    background-image: url("data:image/svg+xml,%3Csvg width='19' height='19' xmlns='http://www.w3.org/2000/svg'%3E%3Cg transform='translate(.054 .5)' fill-rule=' evenodd'%3E%3Ccircle cx=' 9' cy=' 9' r=' 2'/%3E%3Cpath d=' M8 3h2v3H8zm0 9h2v3H8zm4-4h3v2h-3zM3 8h3v2H3zm1.05-2.536L5.464 4.05l2.122 2.122-1.414 1.414zm6.364 6.364l1.414-1.414 2.122 2.122-1.414 1.414zm0-5.656l2.122-2.122 1.414 1.414-2.122 2.122zM4.05 12.536l2.122-2.122 1.414 1.414-2.122 2.122z'/%3E%3C/g%3E%3C/svg%3E");
+    padding-left: 25px;
+    background-repeat: no-repeat;
+}
+
+main .container-bottom ul li.night {
+    background-image: url("data:image/svg+xml,%3Csvg width='8' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.054-.007c.911 0 1.766.244 2.501.67a4.998 4.998 0 00-.002 8.661 5 5 0 11-2.5-9.33z' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding-left: 25px;
+    background-position: 5px;
+    background-repeat: no-repeat;
+}
+
+
+.apacia {
+    background-color: black;
+    padding-top: 140px;
+    font-family: Bw Nista Int, Arial, sans-serif;
+    padding-bottom: 135px;
+}
+
+.apacia-vidus {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.logo {
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.apacia-meniu {
+    width: 30%;
+    padding-right: 30px;
+}
+
+.apacia-meniu-desine {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.apacia ul {
+    margin: 0;
+    padding: 0;
+}
+
+.apacia-meniu li {
+    display: block;
+    padding-bottom: 10px;
+
+}
+
+.adresai {
+    max-width: 180px;
+}
+
+.miestas {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    padding-bottom: 25px;
+}
+
+.adresai .adresas {
+    padding-bottom: 20px;
+}
+
+.apacia a {
+    color: darkgray
+}
+
+.linkai {
+    width: 30%;
+}
+
+.linkai li {
+    padding-right: 10px;
+}
+
+.apacia-apacia {
+    display: flex;
+    font-size: 12px;
+    padding-top: 250px;
+    color: darkgray
+}
+
+.apacia-apacia div:first-child {
+    width: 65%;
+
+}
+@media screen and (max-width:1366px) {
+    .wrap {
+        max-width: 1366px;
+    }
+}
+
+@media screen and (max-width:1160px) {
+
+    header ul li,
+    .mygtukas {
+        display: none;
+    }
+
+    header .sarasas:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background: url(https://storage.googleapis.com/proudcity/santaclaracountycacities/uploads/2021/07/333-3335189_menu-three-horizontal-lines-symbol-free-icon-logos-with-horizontal-lines.jpg) no-repeat;
+        position: absolute;
+        margin-left: -30px;
+        background-size: 40px;
+    }
+
+    main .vidurys-wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    main .naujas-img {
+        grid-column: span 2;
+    }
+
+    main .vidurys-right {
+        grid-column: span 1;
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width:770px) {
+    main .vidurys-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    main .pasirinkimai {
+        width: 100%;
+        display: block;
+        position: static;
+    }
+    main .naujas-img {
+        width: 100%;
+    }
+    .img-textas span{
+        display: block;
+    }
+    .naujas-img {
+        background-image: url(https://codeacademy.lt/wp-content/uploads/2021/05/Mobile_banner.jpg);
+        background-position: 90px 70%;
+        background-size: 600px;
+        height: 200px;
+    }
+}
+@media screen and (max-width:550px) {
+    main .vidurys-wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    main .button-2 {
+        display: block;
+    }
+    main .vidurys h1 {
+        font-size: 30px;
+    }
+    main .pasirinkimai {
+        display: none;
+    }
+}
