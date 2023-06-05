@@ -1,3 +1,4 @@
+
 function Shop(props) {
     const { shopName, phone, email, address } = props
     return (

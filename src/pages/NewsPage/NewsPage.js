@@ -1,8 +1,8 @@
 
-import VideoSectionWrapper from '../components/newsPage/VideoSectionWrapper/VideoSectionWrapper';
-import NewsWrapper from '../components/newsPage/NewsWrapper/NewsWrapper';
-import PodcastsWrapper from '../components/newsPage/PodcastsWrapper/PodcastsWrapper'
-import EventsWrapper from '../components/newsPage/EventsWrapper/EventsWrapper'
+import VideoSectionWrapper from '../../components/newsPage/VideoSectionWrapper/VideoSectionWrapper';
+import NewsWrapper from '../../components/newsPage/NewsWrapper/NewsWrapper';
+import PodcastsWrapper from '../../components/newsPage/PodcastsWrapper/PodcastsWrapper'
+import EventsWrapper from '../../components/newsPage/EventsWrapper/EventsWrapper'
 import './NewsPage.css'
 function News() {
     return (

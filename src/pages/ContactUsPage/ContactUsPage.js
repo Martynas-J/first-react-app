@@ -1,5 +1,7 @@
-import FindUs from "../components/contactPage/FindUs"
-import Map from "../components/contactPage/Map"
+
+import FindUs from "../../components/contactPage/FindUs"
+import Map from "../../components/contactPage/Map"
+import 'bootstrap/dist/css/bootstrap.css';
 
 function ContactUs() {
     return (

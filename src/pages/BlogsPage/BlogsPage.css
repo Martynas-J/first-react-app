@@ -1,0 +1,82 @@
+
+.container.blog{
+    width: 1300px;
+    height: 700px;
+    background-color: bisque;
+    display: flex;
+    column-gap: 40px;
+    justify-content: space-between;
+    color: aliceblue;
+    line-height:normal;
+    font-family:'Times New Roman', Times, serif;
+}
+.container .child{
+    width: 80%; 
+}
+.img img{
+    border-radius: 30px;
+    margin-right: 20px;
+    background-color: gray;
+    height: 50px;
+    width: 50px;
+}
+.container .child:last-child{
+    width: 20%;
+    background-color: white;
+    border-radius: 15px;
+
+    color: black;
+}
+.inner-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+.inner-container .inner-child:nth-child(1),
+.inner-container .inner-child:nth-child(4){
+    width: calc(70% - 20px);
+    height: calc(50% - 20px);
+    background-color: rgb(255, 145, 0);
+}
+.inner-container .inner-child:nth-child(2),
+.inner-container .inner-child:nth-child(3){
+    width: calc(30% - 20px);
+    height: calc(50% - 20px);
+    background-color: rgb(255, 0, 140);
+}
+
+.inner-container .inner-child:nth-child(1){
+    background-color: rgb(82, 22, 221)
+}
+.inner-container .inner-child:nth-child(2){
+    background-color: rgb(106, 102, 121);
+}
+.inner-container .inner-child:nth-child(3){
+    background-color: white;
+    color: black;
+}
+.inner-container .inner-child:nth-child(4){
+    background-color: rgb(36, 32, 48);
+}
+.img{
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.foto-right{
+    font-size: 70%;
+}
+.name{
+    font-weight: 600;
+    padding-bottom: 5px;
+}
+.antraste{
+    font-weight: 600;
+    padding-bottom: 20px;
+    font-size: 130%;
+}
+.destimas{
+    padding-bottom: 20px;
+    font-size: 90%;
+    letter-spacing: 1px;
+}
