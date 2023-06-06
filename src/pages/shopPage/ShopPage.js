@@ -32,18 +32,16 @@ const ShopPage = () => {
 
     const [goods, setGoods] = useState(shopListArr)
 
-const addProduct = (event) => {
-
-    const title = event.target.previousElementSibling.value
-
-    setGoods(prevState => {
-        let newState = [...prevState]
-        newState.push({title})
-        console.log(newState)
-        return newState
-    })
+    const addProduct = (event) => {
+        event.preventDefault();
+        const title = event.target["new-product"].value
+        const done = JSON.parse(event.target["or-done"].value)
+        setGoods(prevState => {
+            let newState = [...prevState]
+            newState.push({ title, done })
+            return newState
+        })
     }
-    
 
     return (
         <div>
@@ -62,8 +60,14 @@ const addProduct = (event) => {
                         </ul>
                     </>
                 ) : <h3>Your shopping list is empty</h3>}
-                <input type="text" placeholder="Write Product"></input>
-                <button onClick={addProduct} >Add Product</button>
+                <form onSubmit={addProduct} >
+                    <input type="text" name="new-product" placeholder="Write Product"></input>
+                    <select name="or-done">
+                        <option value={false}>Product is </option>
+                        <option value={true}>Empty</option>
+                    </select>
+                    <button type="submit" >Add Product</button>
+                </form>
             </Container>
         </div>
     )
