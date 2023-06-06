@@ -33,6 +33,7 @@ const ShopPage = () => {
     const [goods, setGoods] = useState(shopListArr)
 
 const addProduct = (event) => {
+
     const title = event.target.previousElementSibling.value
 
     setGoods(prevState => {
