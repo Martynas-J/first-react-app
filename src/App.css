@@ -1,5 +1,5 @@
 
-#root>div {
+html body {
   background-color: rgb(207, 204, 200);
 
 }
@@ -41,23 +41,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-.menu{
-  display:flex;
-  list-style: none;
-  gap: 20px;
-}
-.menu .link{
-  color: beige;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 20px;
-  transition-property: color, box-shadow, border;
-  transition-duration: 0.5s;
-}
-.menu .link:hover{
-  color: rgb(0, 0, 0);
-  box-shadow: inset 0px 0px 16px 15px teal;
-  border-radius: 20px;
-  
 }

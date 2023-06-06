@@ -1,0 +1,10 @@
+.pageTitle{
+    text-align: center;
+}
+.shop-item{
+    display: block;
+}
+.ends{
+    text-decoration: line-through;
+    color: brown;
+}
