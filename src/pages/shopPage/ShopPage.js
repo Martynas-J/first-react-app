@@ -41,6 +41,7 @@ const ShopPage = () => {
             newState.push({ title, done })
             return newState
         })
+        event.target.reset()
     }
 
     return (
