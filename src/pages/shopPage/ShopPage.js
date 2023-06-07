@@ -37,8 +37,7 @@ const ShopPage = () => {
         const title = event.target["new-product"].value
         const done = JSON.parse(event.target["or-done"].value)
         setGoods(prevState => {
-            let newState = [...prevState]
-            newState.push({ title, done })
+            let newState = [{ title, done }, ...prevState]
             return newState
         })
         event.target.reset()
