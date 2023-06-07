@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 
-const ShoppingItem = ({ product, editProductHandler, index }) => {
+const ShoppingItem = ({ product, editProductHandler, deleteProductHandler, index }) => {
     let { title, done } = product
 
     let [isEdit, setIsEdit] = useState(true)
@@ -18,6 +18,7 @@ const ShoppingItem = ({ product, editProductHandler, index }) => {
                 <label htmlFor='or-is'>Empty </label>
                 <input type='checkbox' id='or-is' name='or-is'></input>
                 <button className='save-button' type='submit' >Save</button>
+                <button className='delete-button' onClick={() => deleteProductHandler(index, editHandler)} >Delete</button>
             </form>
         </>
     let listElements =

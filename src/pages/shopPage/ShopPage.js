@@ -31,7 +31,7 @@ const ShopPage = () => {
     ]
 
     const [goods, setGoods] = useState(shopListArr)
-    
+
     const addProductHandler = (event) => {
         event.preventDefault();
         const title = event.target["new-product"].value
@@ -53,6 +53,11 @@ const ShopPage = () => {
         event.target.reset();
         editHandler()
     };
+    const deleteProductHandler = (index, editHandler) => {
+        let newState = goods.toSpliced(index, 1);
+        setGoods(newState)
+        editHandler()
+    }
 
     return (
         <div>
@@ -76,6 +81,7 @@ const ShopPage = () => {
                                     product={product}
                                     index={index}
                                     editProductHandler={editProductHandler}
+                                    deleteProductHandler={deleteProductHandler}
                                 />
                             ))}
                         </ul>

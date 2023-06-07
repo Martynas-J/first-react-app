@@ -37,7 +37,6 @@ const CounterPage = () => {
     }
     const removeNumber = (index) => {
         let newState = grades.toSpliced(index, 1);
-        
         setGrades(newState)
     }
     const editNumber = (index) => {
