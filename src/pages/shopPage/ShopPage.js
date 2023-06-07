@@ -17,15 +17,15 @@ const ShopPage = () => {
 
         },
         {
-            title: "baguette",
+            title: "Baguette",
             done: false,
         },
         {
-            title: "soap",
+            title: "Soap",
             done: false,
         },
         {
-            title: "salt",
+            title: "Salt",
             done: false,
         },
     ]
