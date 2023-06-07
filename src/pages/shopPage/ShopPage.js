@@ -32,7 +32,7 @@ const ShopPage = () => {
 
     const [goods, setGoods] = useState(shopListArr)
 
-    const addProduct = (event) => {
+    const addProductHandler = (event) => {
         event.preventDefault();
         const title = event.target["new-product"].value
         const done = JSON.parse(event.target["or-done"].value)
@@ -43,11 +43,28 @@ const ShopPage = () => {
         })
         event.target.reset()
     }
+    const editProductHandler = (event, index) => {
+        event.preventDefault();
+        const title = event.target["edit-product"].value;
+        const done = event.target["or-is"].checked;
+        let newState = [...goods]; 
+        newState.splice(index, 1, { title, done }); 
+        setGoods(newState); 
+        event.target.reset();
+    };
 
     return (
         <div>
             <Container>
                 <h2 className="page-title">ShopPage</h2>
+                <form onSubmit={addProductHandler} className="form-add-product">
+                    <input type="text" name="new-product" placeholder="Write Product"></input>
+                    <select name="or-done">
+                        <option value={false}>Product is </option>
+                        <option value={true}>Empty</option>
+                    </select>
+                    <button type="submit" >Add Product</button>
+                </form>
                 {goods && goods.length > 0 ? (
                     <>
                         <h3 className="list-title">ShopList:</h3>
@@ -56,19 +73,14 @@ const ShopPage = () => {
                                 <ShoppingItem
                                     key={index}
                                     product={product}
+                                    index={index}
+                                    editProductHandler={editProductHandler}
                                 />
                             ))}
                         </ul>
                     </>
                 ) : <h3>Your shopping list is empty</h3>}
-                <form onSubmit={addProduct} className="form-add-product">
-                    <input type="text" name="new-product" placeholder="Write Product"></input>
-                    <select name="or-done">
-                        <option value={false}>Product is </option>
-                        <option value={true}>Empty</option>
-                    </select>
-                    <button type="submit" >Add Product</button>
-                </form>
+
             </Container>
         </div>
     )

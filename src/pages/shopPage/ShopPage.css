@@ -13,14 +13,23 @@
 .shop-item{
     background-color: rgb(252, 252, 240);
     border-bottom: 1px solid black;
-    width: 100px;
+    width: 280px;
+    display: flex;
+    justify-content: space-between;
+    
 }
 .ends{
     text-decoration: line-through;
     color: brown;
-    opacity: 0.5;
 }
 .form-add-product{
     display: flex;
     justify-content: center;
+}
+.edit-product-form{
+    display: flex;
+    gap: 10px;
+}
+.edit-product{
+    width: 80px;
 }
