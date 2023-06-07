@@ -1,17 +1,30 @@
 
 
-import React from 'react'
+import React, { useState } from 'react'
 
 const ShoppingItem = ({ product, editProductHandler, index }) => {
-    let classes = product.done ? "ends shop-item" : "shop-item"
+    let { title, done } = product
+
+    let [productTitle, setProductTitle] = useState(title)
+
+    const itemInputHandler = (event) => setProductTitle(event.target.value);
+
+    let editElements = <>
+        <input className='edit-product' defaultValue={title} type='text' name='edit-product' onChange={itemInputHandler}></input>
+        <label htmlFor='or-is'>Empty </label>
+        <input type='checkbox' id='or-is' name='or-is'></input>
+        <button className='save-button' type='submit' onClick={() => setProductTitle(productTitle)}>Save</button>
+    </>
+    let listElement = <>
+        {productTitle}
+
+        <button className='edit-button' onClick={() => setProductTitle("")} type='submit'>Edit</button>
+    </>
+    let classes = done ? "ends shop-item" : "shop-item"
     return (
         <li className={classes}>
-            {product.title}
             <form className='edit-product-form' onSubmit={(event) => editProductHandler(event, index)}>
-                <input className='edit-product' defaultValue={product.title} maxLength={"20"} type='text' name='edit-product'></input>
-                <label htmlFor='or-is'>Empty</label>
-                <input type='checkbox' id='or-is' name='or-is'></input>
-                <button className='edit-button' type='submit'>Edit</button>
+                {productTitle === title ? listElement : editElements}
             </form>
         </li>
     )
