@@ -8,7 +8,7 @@ const ShoppingItem = ({ product, editProductHandler, index }) => {
         <li className={classes}>
             {product.title}
             <form className='edit-product-form' onSubmit={(event) => editProductHandler(event, index)}>
-                <input className='edit-product' maxLength={"20"} type='text' name='edit-product'></input>
+                <input className='edit-product' defaultValue={product.title} maxLength={"20"} type='text' name='edit-product'></input>
                 <label htmlFor='or-is'>Empty</label>
                 <input type='checkbox' id='or-is' name='or-is'></input>
                 <button className='edit-button' type='submit'>Edit</button>
