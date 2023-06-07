@@ -47,11 +47,11 @@ const ShopPage = () => {
     return (
         <div>
             <Container>
-                <h2 className="pageTitle">ShopPage</h2>
+                <h2 className="page-title">ShopPage</h2>
                 {goods && goods.length > 0 ? (
                     <>
-                        <h3>ShopList:</h3>
-                        <ul>
+                        <h3 className="list-title">ShopList:</h3>
+                        <ul className="shop-list">
                             {goods.map((product, index) => (
                                 <ShoppingItem
                                     key={index}
@@ -61,7 +61,7 @@ const ShopPage = () => {
                         </ul>
                     </>
                 ) : <h3>Your shopping list is empty</h3>}
-                <form onSubmit={addProduct} >
+                <form onSubmit={addProduct} className="form-add-product">
                     <input type="text" name="new-product" placeholder="Write Product"></input>
                     <select name="or-done">
                         <option value={false}>Product is </option>

@@ -1,10 +1,26 @@
-.pageTitle{
+.page-title{
     text-align: center;
+    margin-bottom: 30px;
+}
+.list-title{
+    padding-bottom: 20px;
+}
+.shop-list{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }
 .shop-item{
-    display: block;
+    background-color: rgb(252, 252, 240);
+    border-bottom: 1px solid black;
+    width: 100px;
 }
 .ends{
     text-decoration: line-through;
     color: brown;
+    opacity: 0.5;
+}
+.form-add-product{
+    display: flex;
+    justify-content: center;
 }
