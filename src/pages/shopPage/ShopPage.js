@@ -43,7 +43,7 @@ const ShopPage = () => {
         })
         event.target.reset()
     }
-    const editProductHandler = (event, index) => {
+    const editProductHandler = (event, index, editHandler) => {
         event.preventDefault();
         const title = event.target["edit-product"].value;
         const done = event.target["or-is"].checked;
@@ -51,7 +51,7 @@ const ShopPage = () => {
         newState.splice(index, 1, { title, done });
         setGoods(newState);
         event.target.reset();
-        console.log(newState)
+        editHandler()
     };
 
     return (
