@@ -31,7 +31,7 @@ const ShopPage = () => {
     ]
 
     const [goods, setGoods] = useState(shopListArr)
-
+    
     const addProductHandler = (event) => {
         event.preventDefault();
         const title = event.target["new-product"].value
@@ -47,10 +47,11 @@ const ShopPage = () => {
         event.preventDefault();
         const title = event.target["edit-product"].value;
         const done = event.target["or-is"].checked;
-        let newState = [...goods]; 
-        newState.splice(index, 1, { title, done }); 
-        setGoods(newState); 
+        let newState = [...goods];
+        newState.splice(index, 1, { title, done });
+        setGoods(newState);
         event.target.reset();
+        console.log(newState)
     };
 
     return (
