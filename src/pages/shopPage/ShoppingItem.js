@@ -18,7 +18,7 @@ const ShoppingItem = ({ product, editProductHandler, index }) => {
     let listElement = <>
         {productTitle}
 
-        <button className='edit-button' onClick={() => setProductTitle("")} type='submit'>Edit</button>
+        <button className='edit-button' onClick={() => setProductTitle("")}>Edit</button>
     </>
     let classes = done ? "ends shop-item" : "shop-item"
     return (
