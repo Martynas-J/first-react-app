@@ -1,0 +1,33 @@
+.capital-title{
+    color: green;
+}
+.capital{
+    background-color: rgb(187, 187, 187);
+}
+.black{
+    color: black;
+}
+.touristAttractions{
+    display: block;
+}
+.green-color{
+    color: green;
+}
+.orange-color{
+    color: orange;
+}
+.red-color{
+    color: red;
+}
+.cities-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.cities-list *{
+    padding: 10px;
+}
+.odd:last-child{
+    grid-column: span 2;
+    background-color: white;
+}

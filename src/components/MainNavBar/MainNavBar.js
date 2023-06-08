@@ -28,6 +28,9 @@ const MainNavBar = () => {
                 <li className='navigation-item'>
                     <NavLink to='/Shop' className='navigation-link'>Shop</NavLink>
                 </li>
+                <li className='navigation-item'>
+                    <NavLink to='/Cities' className='navigation-link'>Cities</NavLink>
+                </li>
             </ul>
         </nav>
     )

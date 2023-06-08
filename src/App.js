@@ -8,6 +8,7 @@ import MainNavBar from './components/MainNavBar/MainNavBar';
 import './components/MainNavBar/MainNavBar.css'
 import CounterPage from './pages/CounterPage/CounterPage';
 import ShopPage from './pages/shopPage/ShopPage';
+import Cities from './pages/CitiesPage/CitiesPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path='/Courses' element={<Curses />} />
         <Route path='/Counter' element={<CounterPage />} />
         <Route path='/Shop' element={<ShopPage />} />
+        <Route path='/Cities' element={<Cities />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>
