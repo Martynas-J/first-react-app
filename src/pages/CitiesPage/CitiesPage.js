@@ -112,16 +112,19 @@ const Cities = () => {
     const addIsCapitalHandle = (event) => setIsCapital(event.target.checked)
 
     const addCityHandle = (event) => {
-        console.log(isCapital)
         event.preventDefault();
-        const form = event.target
         const location = { continent, country }
         const touristAttractions = touristAttractionsStr.split(",")
         setCities(prevState => {
             let newState = [{ name, population, location, touristAttractions, isCapital }, ...prevState]
             return newState
         })
-        form.reset()
+        setName("");
+        setPopulation("");
+        setContinent("");
+        setCountry("");
+        setTouristAttractionsStr("");
+        setIsCapital(false);
     }
 
     return (
