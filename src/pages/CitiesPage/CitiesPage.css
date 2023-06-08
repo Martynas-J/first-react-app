@@ -31,3 +31,10 @@
     grid-column: span 2;
     background-color: white;
 }
+.city-add-form{
+    width: 280px;
+}
+.city-input{
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CityItem from './CityItem';
 import { Container } from 'react-bootstrap';
 
@@ -95,17 +95,76 @@ const Cities = () => {
             touristAttractions: ['Hokkaido Jingu'],
             isCapital: false,
         },
-
     ];
+    const [cities, setCities] = useState(citiesData)
+
+    const ControlledInput = ({ value, onChange, type, id }) => (
+        <input id={id} type={type} value={value} onChange={(e) => onChange(e.target.value)} />
+    );
+
+    const AddNameForm = () => {
+        const [name, setName] = useState("")
+        const [population, setPopulation] = useState("")
+        const [continent, setContinent] = useState("")
+        const [country, setCountry] = useState("")
+        const [touristAttractionsStr, setTouristAttractionsStr] = useState("")
+        const [isCapital, setIsCapital] = useState(false)
+
+        const addTouristAttractionsHandle = (event) => setTouristAttractionsStr(event.target.value)
+
+        const addCityHandle = (event) => {
+            event.preventDefault();
+            const form = event.target
+            const location = { continent, country }
+            const touristAttractions = touristAttractionsStr.split(",")
+            setCities(prevState => {
+                let newState = [{ name, population, location, touristAttractions, isCapital }, ...prevState]
+                return newState
+            })
+            form.reset()
+        }
+        return (
+            <form className='city-add-form' onSubmit={addCityHandle}>
+                <div className='city-input'>
+                    <label htmlFor='name'>Name:</label>
+                    <ControlledInput value={name} onChange={setName} type="text" id='name' />
+                </div>
+                <div className='city-input'>
+                    <label htmlFor='population'>Population:</label>
+                    <ControlledInput value={population} onChange={setPopulation} type="number" id='population' />
+                </div>
+                <div className='city-input'>
+                    <label htmlFor='continent'>Continent:</label>
+                    <ControlledInput value={continent} onChange={setContinent} type="text" id='continent' />
+                </div>
+                <div className='city-input'>
+                    <label htmlFor='country'>Country:</label>
+                    <ControlledInput value={country} onChange={setCountry} type="text" id='country' />
+                </div>
+                <div className='city-input'>
+                    <label htmlFor='tourist-attractions'>Tourist Attractions:</label>
+                    <textarea id='tourist-attractions' value={touristAttractionsStr} onChange={addTouristAttractionsHandle}></textarea>
+                </div>
+                <div className='city-input'>
+                    <label htmlFor='is-capital'>Is Capital:</label>
+                    <ControlledInput value={isCapital} onChange={setIsCapital} type="checkbox" id='is-capital' />
+                    <input type='submit' value='Save'></input>
+                </div>
+            </form>
+        );
+    };
+
+
     return (
         <div>
             <Container>
                 <h1 className='page-title'>Cities uzduotis</h1>
                 {citiesData.length > 0 ? (
                     <>
-                        <h2>Cities:</h2>
+                        <h2>Add City</h2>
+                        <AddNameForm />
                         <div className="cities-list">
-                            {citiesData.map((city, index) => (
+                            {cities.map((city, index) => (
                                 <CityItem
                                     key={index}
                                     city={city}
@@ -143,3 +202,5 @@ export default Cities
 // 4.2. Jeigu lankytinų vietų yra daugiau, nei viena, tai tekstas turėtų būti daugiskaitoje, pvz. „Main Tourist attractions of Kaunas are".
 // 4.3. Jeigu lankytinų vietų nėra, tai tekstas neturėtų būti atvaizduojamas.
 // 5. Jeigu miestų skaičius nėra porinis, tai paskutinio miesto plotis turi būti 100%, o visų kitų - 50%.
+
+// 6. Sukurti formą, kurioje galima pridėti naują miestą į miestų state masyvą.
