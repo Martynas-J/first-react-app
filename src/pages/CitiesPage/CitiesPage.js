@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CityItem from './CityItem';
 import { Container } from 'react-bootstrap';
+import AddForm from './AddForm';
 
 const Cities = () => {
 
@@ -98,63 +99,6 @@ const Cities = () => {
     ];
     const [cities, setCities] = useState(citiesData)
 
-    const ControlledInput = ({ value, onChange, type, id }) => (
-        <input id={id} type={type} value={value} onChange={(e) => onChange(e.target.value)} />
-    );
-
-    const AddNameForm = () => {
-        const [name, setName] = useState("")
-        const [population, setPopulation] = useState("")
-        const [continent, setContinent] = useState("")
-        const [country, setCountry] = useState("")
-        const [touristAttractionsStr, setTouristAttractionsStr] = useState("")
-        const [isCapital, setIsCapital] = useState(false)
-
-        const addTouristAttractionsHandle = (event) => setTouristAttractionsStr(event.target.value)
-
-        const addCityHandle = (event) => {
-            event.preventDefault();
-            const form = event.target
-            const location = { continent, country }
-            const touristAttractions = touristAttractionsStr.split(",")
-            setCities(prevState => {
-                let newState = [{ name, population, location, touristAttractions, isCapital }, ...prevState]
-                return newState
-            })
-            form.reset()
-        }
-        return (
-            <form className='city-add-form' onSubmit={addCityHandle}>
-                <div className='city-input'>
-                    <label htmlFor='name'>Name:</label>
-                    <ControlledInput value={name} onChange={setName} type="text" id='name' />
-                </div>
-                <div className='city-input'>
-                    <label htmlFor='population'>Population:</label>
-                    <ControlledInput value={population} onChange={setPopulation} type="number" id='population' />
-                </div>
-                <div className='city-input'>
-                    <label htmlFor='continent'>Continent:</label>
-                    <ControlledInput value={continent} onChange={setContinent} type="text" id='continent' />
-                </div>
-                <div className='city-input'>
-                    <label htmlFor='country'>Country:</label>
-                    <ControlledInput value={country} onChange={setCountry} type="text" id='country' />
-                </div>
-                <div className='city-input'>
-                    <label htmlFor='tourist-attractions'>Tourist Attractions:</label>
-                    <textarea id='tourist-attractions' value={touristAttractionsStr} onChange={addTouristAttractionsHandle}></textarea>
-                </div>
-                <div className='city-input'>
-                    <label htmlFor='is-capital'>Is Capital:</label>
-                    <ControlledInput value={isCapital} onChange={setIsCapital} type="checkbox" id='is-capital' />
-                    <input type='submit' value='Save'></input>
-                </div>
-            </form>
-        );
-    };
-
-
     return (
         <div>
             <Container>
@@ -162,7 +106,7 @@ const Cities = () => {
                 {citiesData.length > 0 ? (
                     <>
                         <h2>Add City</h2>
-                        <AddNameForm />
+                        <AddForm onSetCities={setCities} />
                         <div className="cities-list">
                             {cities.map((city, index) => (
                                 <CityItem
