@@ -9,6 +9,7 @@ import './components/MainNavBar/MainNavBar.css'
 import CounterPage from './pages/CounterPage/CounterPage';
 import ShopPage from './pages/shopPage/ShopPage';
 import Cities from './pages/CitiesPage/CitiesPage';
+import FreeTime from './pages/FreeTime/FreeTime';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/Counter' element={<CounterPage />} />
         <Route path='/Shop' element={<ShopPage />} />
         <Route path='/Cities' element={<Cities />} />
+        <Route path='/FreeTime' element={<FreeTime />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>

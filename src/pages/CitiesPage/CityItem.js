@@ -1,7 +1,7 @@
 import React from 'react'
 import "./CitiesPage.css"
 
-const CityItem = ({ city }) => {
+const CityItem = ({ city, index, onDeleteCityHandler, onEditCityHandler }) => {
     let { name, population, location, touristAttractions, isCapital } = city
 
     let title = name
@@ -25,7 +25,9 @@ const CityItem = ({ city }) => {
     if (touristAttractions.length > 1) {
         touristAttractionsText = <h3>Main Tourist attractions of {name} are</h3>
     }
-    if (touristAttractions.length > 0) {
+
+    if (touristAttractions[0] && touristAttractions.length > 0) {
+       
         touristAttractionsElement = <>
             {touristAttractionsText}
             <ul>
@@ -47,6 +49,8 @@ const CityItem = ({ city }) => {
             <p>{name} city is located in {location.continent}, {location.country} and has population of {population} people.</p>
             {capitalText}
             {touristAttractionsElement}
+            <button onClick={() => onDeleteCityHandler(index)}>Delete</button>
+            <button onClick={() => onEditCityHandler(index)}>Edit</button>
         </div>
     )
 }

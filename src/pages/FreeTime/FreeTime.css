@@ -1,0 +1,37 @@
+.free-time-title{
+    text-align: center;
+    padding-bottom: 50px;
+}
+.wrapper{
+    background-color: rgb(84, 112, 112);
+    border-radius: 10px;
+    padding: 20px;
+}
+.button-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+}
+.all-button{
+    font-size: 50px;
+    border-radius: 10px; 
+    box-shadow: 1px 1px 5px 2px black, inset 1px 1px 20px 2px black; 
+    background-color: teal;
+    color: white;
+}
+.all-button:hover{
+    box-shadow: 1px 1px 8px 5px rgb(237, 234, 234), inset 1px 1px 40px 4px black;
+    color: rgb(0, 54, 54);
+    background-color: rgb(8, 197, 197);
+}
+
+.result-container{
+    padding-bottom: 15px;
+}   
+.result{
+    width: 100%;
+    font-size: 50px;
+    text-align: end;
+    box-shadow: 1px 1px 4px 5px rgb(140 171 171), inset -1px -1px 7px 3px rgb(0 0 0);
+}
+
