@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import CityItem from './CityItem';
 import { Container } from 'react-bootstrap';
+import CitiesForm from './CitiesForm';
+
 
 const Cities = () => {
 
@@ -97,98 +99,38 @@ const Cities = () => {
         },
     ];
     const [cities, setCities] = useState(citiesData)
-    const [name, setName] = useState("")
-    const [population, setPopulation] = useState("")
-    const [continent, setContinent] = useState("")
-    const [country, setCountry] = useState("")
-    const [touristAttractionsStr, setTouristAttractionsStr] = useState("")
-    const [isCapital, setIsCapital] = useState(false)
     const [indexForEdit, setIndexForEdit] = useState("")
 
-    const addNameHandle = (event) => setName(event.target.value)
-    const addPopulationHandle = (event) => setPopulation(event.target.value)
-    const addContinentHandle = (event) => setContinent(event.target.value)
-    const addCountryHandle = (event) => setCountry(event.target.value)
-    const addTouristAttractionsHandle = (event) => setTouristAttractionsStr(event.target.value)
-    const addIsCapitalHandle = (event) => setIsCapital(event.target.checked)
-
-    const addCityHandle = (event) => {
-        event.preventDefault();
-        const location = { continent, country }
-        const touristAttractions = touristAttractionsStr.split(",")
-        const newData = { name, population, location, touristAttractions, isCapital }
-
+    const CitiesUpdateHandler = (city) => {
         if (indexForEdit !== "") {
             setCities(prevState => {
-                prevState[indexForEdit] = newData
+                prevState[indexForEdit] = city
                 let newState = [...prevState]
                 setIndexForEdit("")
                 return newState
             })
         } else {
-            setCities(prevState => {
-                let newState = [newData, ...prevState]
-                return newState
-            })
+            setCities(prevState => [city, ...prevState])
         }
-
-        setName("");
-        setPopulation("");
-        setContinent("");
-        setCountry("");
-        setTouristAttractionsStr("");
-        setIsCapital(false);
-
     }
-
     const deleteCityHandler = (index) => {
         let newState = cities.toSpliced(index, 1);
         setCities(newState)
     }
-    const EditCityHandler = (index) => {
-        let newCity = cities[index]
-        setName(newCity.name);
-        setPopulation(newCity.population);
-        setContinent(newCity.location.continent);
-        setCountry(newCity.location.country);
-        setTouristAttractionsStr(newCity.touristAttractions.join(", "));
-        setIsCapital(newCity.isCapital);
+    const editCityHandler = (index) => {
         setIndexForEdit(index)
     }
-
     return (
         <div>
             <Container>
                 <h1 className='page-title'>Cities uzduotis</h1>
 
                 <h2>Add City</h2>
-                <form className='city-add-form' onSubmit={addCityHandle}>
-                    <div className='city-input'>
-                        <label htmlFor='name'>Name:</label>
-                        <input type='text' id='name' value={name} onChange={addNameHandle}></input>
-                    </div>
-                    <div className='city-input'>
-                        <label htmlFor='population'>Population:</label>
-                        <input type='number' id='population' value={population} onChange={addPopulationHandle}></input>
-                    </div>
-                    <div className='city-input'>
-                        <label htmlFor='continent'>Continent:</label>
-                        <input type='text' id='continent' value={continent} onChange={addContinentHandle}></input>
-                    </div>
-                    <div className='city-input'>
-                        <label htmlFor='country'>Country:</label>
-                        <input type='text' id='country' value={country} onChange={addCountryHandle}></input>
-                    </div>
-                    <div className='city-input'>
-                        <label htmlFor='tourist-attractions'>Tourist Attractions:</label>
-                        <textarea id='tourist-attractions' value={touristAttractionsStr} onChange={addTouristAttractionsHandle}></textarea>
-                    </div>
-                    <div className='city-input'>
-                        <label htmlFor='is-capital'>Is Capital:</label>
-                        <input type='checkbox' id='is-capital' defaultChecked={isCapital} onChange={addIsCapitalHandle}></input>
-                        <input type='submit' value='Save'></input>
-                    </div>
-                </form>
+                <CitiesForm
+                    onNewCityHandler={CitiesUpdateHandler}
+                    editCity={indexForEdit !== "" ? cities[indexForEdit] : ""}
+
+                />
                 {cities && cities.length > 0 ? (
                     <>
                         <div className="cities-list">
@@ -198,7 +140,7 @@ const Cities = () => {
                                     index={index}
                                     city={city}
                                     onDeleteCityHandler={deleteCityHandler}
-                                    onEditCityHandler={EditCityHandler}
+                                    onEditCityHandler={editCityHandler}
                                 />
                             ))}
                         </div>
@@ -211,27 +153,4 @@ const Cities = () => {
 
 export default Cities
 
-
-// CITIES užduotis:
-// 0. Sukurti CitiesPage komponentą.
-// 1. Jame sukurti masyvą, kuriame būtų 10 skirtingų miestų. Panaudoti anksčiau kurtą masyvą. Kiekvienas miestas turi būti objekto tipo ir turi turėti šiuos properties:
-// 1.1. name - miesto pavadinimas (string)
-// 1.2. population - miesto populiacija (number)
-// 1.3. location - (object)
-//    1.3.1. continent - žemynas (string)
-//    1.3.2. country - šalis (string)
-// 1.4. touristAttractions - lankytinos vietos (array)
-// 1.5. isCapital - reikšmė nurodanti ar miestas yra sostinė (boolean)
-
-// 2. Atvaizduoti visų miestų informaciją sukuriant CityItem komponentą.
-// 3.1. Jeigu miestas yra sostinė, tai:
-// 3.1.1. Prie miesto pavadinimo pridėti žodį capital, pvz.: Vilnius (capital)
-// 3.1.2. Prie miesto aprašymo pridėti tekstą, kuris nusako jog tai šalies sostinė, pvz.: „Vilnius is the capital of Lithuania."
-// 3.1.3. Jeigu miestas yra sostinė, tai prie apgaubiančio elemento pridėti klasę „capital".
-// 4. Priklausomai nuo miesto lankytinų objektų kiekio, tekstas turi skirtis:
-// 4.1. Jeigu lankytina vieta tik viena, tai turėtų būti naudojama vienaskaita, pvz.: „Main Tourist attraction of Vilnius is".
-// 4.2. Jeigu lankytinų vietų yra daugiau, nei viena, tai tekstas turėtų būti daugiskaitoje, pvz. „Main Tourist attractions of Kaunas are".
-// 4.3. Jeigu lankytinų vietų nėra, tai tekstas neturėtų būti atvaizduojamas.
-// 5. Jeigu miestų skaičius nėra porinis, tai paskutinio miesto plotis turi būti 100%, o visų kitų - 50%.
-
-// 6. Sukurti formą, kurioje galima pridėti naują miestą į miestų state masyvą.
+// 1. Prie formos pridėti bent 5-ių checkbox elementų grupę (features), kuriuose galima pasirinkti papildomus miesto privalumus, pvz. "Beach", "Metro", "Hiking trails" ir pan.
