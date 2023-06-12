@@ -14,11 +14,11 @@ const addTodoHandler = (newDate) => {
   return (
     <div>
        <h1 className='todo-title'>TodoPages</h1> 
-       <div className="toto-form">
+       <div className="todo-form">
             <TodoForm  onNewTodoHandler = {addTodoHandler} />
 
        </div>
-       <div className="toto-wrapper">
+       <div className="todo-wrapper">
             <TodoList 
             todoList = {todo}
             />
