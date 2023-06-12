@@ -8,6 +8,10 @@ const CitiesForm = ({ onNewCityHandler, editCity }) => {
     const [country, setCountry] = useState("")
     const [touristAttractionsStr, setTouristAttractionsStr] = useState("")
     const [isCapital, setIsCapital] = useState(false)
+    // const [selectedPerks, setSelectedPerks] = useState([]);
+
+    const [beach, setBeach] = useState(false);
+
 
     useEffect(() => {
         if (editCity) {
@@ -22,12 +26,25 @@ const CitiesForm = ({ onNewCityHandler, editCity }) => {
     const addTouristAttractionsHandle = (event) => setTouristAttractionsStr(event.target.value)
     const addIsCapitalHandle = (event) => setIsCapital(event.target.checked)
 
+    const addBeachHandle = (event) => setBeach(event.target.checked)
+
+
+    // const addPerksHandle = (event) => {
+    //     const { value, checked } = event.target;
+    //     if (checked) {
+    //         setSelectedPerks((prevPerks) => [...prevPerks, value]);
+    //     } else {
+    //         setSelectedPerks((prevPerks) => prevPerks.filter((perk) => perk !== value));
+    //     }
+    // };
+
+
 
     const addCityHandler = (event) => {
         event.preventDefault();
         const location = { continent, country }
         const touristAttractions = touristAttractionsStr.split(",").map(item => item.trim())
-        const newData = { name, population, location, touristAttractions, isCapital }
+        const newData = { name, population, location, touristAttractions, isCapital, }
         setName("");
         setPopulation("");
         setContinent("");
@@ -41,10 +58,8 @@ const CitiesForm = ({ onNewCityHandler, editCity }) => {
         setName(newCity.name);
         setPopulation(newCity.population);
         setContinent(newCity.location.continent);
-        setCountry(newCity.location.country);
         setTouristAttractionsStr(newCity.touristAttractions.join(", "));
         setIsCapital(newCity.isCapital);
-
     }
 
     return (
@@ -70,12 +85,29 @@ const CitiesForm = ({ onNewCityHandler, editCity }) => {
                 <textarea id='tourist-attractions' value={touristAttractionsStr} onChange={addTouristAttractionsHandle}></textarea>
             </div>
             <div className='city-input'>
-                <label htmlFor='is-capital'>Is Capital:</label>
                 <input type='checkbox' id='is-capital' checked={isCapital} onChange={addIsCapitalHandle}></input>
+                <label htmlFor='is-capital'>Is Capital:</label>
                 <input type='submit' value='Save'></input>
             </div>
-        </form>
+            <label htmlFor='perks-fieldset'>Perks:</label>
+            <fieldset className="perks" id='perks-fieldset' >
+                <div className='checkbox-input'>
+                    <input type='checkbox' id='beach' value="Beach" checked={beach} onChange={setBeach} ></input>
+                    <label htmlFor='beach'>Beach</label>
+                </div>
+                <div className='checkbox-input'>
+                    <input type='checkbox' id='metro' value="Metro"  ></input>
+                    <label htmlFor='metro'>Metro</label>
+                </div>
+                <div className='checkbox-input'>
+                    <input type='checkbox' id='hiking-trails' value="Hiking trails"  checked={false}></input>
+                    <label htmlFor='hiking-trails'>Hiking trails</label>
+                </div>
+            </fieldset>
+        </form >
     )
 }
 
 export default CitiesForm
+
+// 1. Prie formos pridėti bent 5-ių checkbox elementų grupę (features), kuriuose galima pasirinkti papildomus miesto privalumus, pvz. "Beach", "Metro", "Hiking trails" ir pan.

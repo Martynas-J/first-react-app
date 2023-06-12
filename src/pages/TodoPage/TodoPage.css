@@ -1,0 +1,17 @@
+.todo-title{
+    text-align: center;
+}
+.todo-item{
+    display: block;
+    padding: 20px;
+    background-color: white;
+    border-radius: 20px;
+}
+.todo-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+.todo-item li{
+    display: block;  
+}

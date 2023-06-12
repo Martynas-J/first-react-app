@@ -10,6 +10,7 @@ import CounterPage from './pages/CounterPage/CounterPage';
 import ShopPage from './pages/shopPage/ShopPage';
 import Cities from './pages/CitiesPage/CitiesPage';
 import FreeTime from './pages/FreeTime/FreeTime';
+import TodoPages from './pages/TodoPage/TodoPages';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path='/Shop' element={<ShopPage />} />
         <Route path='/Cities' element={<Cities />} />
         <Route path='/FreeTime' element={<FreeTime />} />
+        <Route path='/TodoPage' element={<TodoPages />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>

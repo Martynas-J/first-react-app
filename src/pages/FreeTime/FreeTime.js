@@ -4,6 +4,8 @@ import { useState } from "react"
 
 const FreeTime = () => {
 
+    const regex = /[+\-*\/]$/
+
     const [item, setItem] = useState("")
     const [nullButton, setNullButton] = useState(true)
     const [plusButton, setPlusButton] = useState(false)
@@ -25,6 +27,10 @@ const FreeTime = () => {
     }
     const symbolsHandle = (event) => {
         setItem(prevState => prevState + event.target.value)
+        console.log(regex.test(item))
+        if ((event.target.value === "." && item === "") || regex.test(item)) {
+            setItem(prevState => prevState.slice(0, -1) + "0" + prevState.at(-1))
+        }
         setNullButton(true)
         setPlusButton(true)
         setMinusButton(true)
@@ -56,8 +62,7 @@ const FreeTime = () => {
     }
     const cleanOneHandle = () => {
         console.log(item[item.length - 1])
-        if (item[item.length - 1] === "-" || item[item.length - 1] === "+" ||
-            item[item.length - 1] === "*" || item[item.length - 1] === "/") {
+        if (regex.test(item)) {
             setPlusButton(false)
             setMinusButton(false)
             setMultiplyButton(false)

@@ -16,6 +16,7 @@ const Cities = () => {
             },
             touristAttractions: ['Gedimino pilies bokstas', 'Vilniaus katedra'],
             isCapital: true,
+            perks: ["Metro"],
         },
         {
             name: 'New York',
@@ -26,6 +27,7 @@ const Cities = () => {
             },
             touristAttractions: [],
             isCapital: false,
+            perks: ["Metro"],
         },
         {
             name: 'Tokyo',
@@ -36,6 +38,7 @@ const Cities = () => {
             },
             touristAttractions: ['Sensō-ji'],
             isCapital: true,
+            perks: ["Metro"],
         },
         {
             name: 'Amsterdam',
@@ -46,6 +49,7 @@ const Cities = () => {
             },
             touristAttractions: ['Van gogh museum', 'Rijksmuseum', 'Anne Frank museum'],
             isCapital: true,
+            perks: ["Metro"],
         },
         {
             name: 'Monaco',
@@ -56,6 +60,7 @@ const Cities = () => {
             },
             touristAttractions: [],
             isCapital: true,
+            perks: [],
         },
         {
             name: 'Havana',
@@ -66,6 +71,7 @@ const Cities = () => {
             },
             touristAttractions: ['National Capitol of Cuba', 'Plaza de la Catedral'],
             isCapital: true,
+            perks: ["Metro"],
         },
         {
             name: 'Singapore',
@@ -76,6 +82,7 @@ const Cities = () => {
             },
             touristAttractions: ['Marina Bay Sands', 'Gardens by the Bay', 'Singapore Zoo'],
             isCapital: true,
+            perks: ["Metro"],
         },
         {
             name: 'Melbourne',
@@ -86,6 +93,7 @@ const Cities = () => {
             },
             touristAttractions: ['Melbourne Skydeck'],
             isCapital: false,
+            perks: ["Metro"],
         },
         {
             name: 'Sapporo',
@@ -96,6 +104,7 @@ const Cities = () => {
             },
             touristAttractions: ['Hokkaido Jingu'],
             isCapital: false,
+            perks: ["Metro"],
         },
     ];
     const [cities, setCities] = useState(citiesData)
@@ -153,4 +162,3 @@ const Cities = () => {
 
 export default Cities
 
-// 1. Prie formos pridėti bent 5-ių checkbox elementų grupę (features), kuriuose galima pasirinkti papildomus miesto privalumus, pvz. "Beach", "Metro", "Hiking trails" ir pan.

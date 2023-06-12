@@ -38,3 +38,7 @@
     display: flex;
     justify-content: space-between;
 }
+.checkbox-input{
+    display: flex;
+    gap: 20px;
+}

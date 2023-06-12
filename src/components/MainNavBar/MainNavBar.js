@@ -34,6 +34,9 @@ const MainNavBar = () => {
                 <li className='navigation-item'>
                     <NavLink to='/FreeTime' className='navigation-link'>FreeTime</NavLink>
                 </li>
+                <li className='navigation-item'>
+                    <NavLink to='/TodoPage' className='navigation-link'>Todo Page</NavLink>
+                </li>
                 
             </ul>
         </nav>

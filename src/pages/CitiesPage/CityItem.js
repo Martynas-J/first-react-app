@@ -2,7 +2,7 @@ import React from 'react'
 import "./CitiesPage.css"
 
 const CityItem = ({ city, index, onDeleteCityHandler, onEditCityHandler }) => {
-    let { name, population, location, touristAttractions, isCapital } = city
+    let { name, population, location, touristAttractions, isCapital, perks } = city
 
     let title = name
     let capitalTitleClass = ""
@@ -25,9 +25,14 @@ const CityItem = ({ city, index, onDeleteCityHandler, onEditCityHandler }) => {
     if (touristAttractions.length > 1) {
         touristAttractionsText = <h3>Main Tourist attractions of {name} are</h3>
     }
+    let perksList = ""
+    console.log(perks.length)
+    if (perks.length > 0 && perks) {
+        perksList = <p>City Perks: {perks.map(perk => perk + ", ")}</p>
+
+    }
 
     if (touristAttractions[0] && touristAttractions.length > 0) {
-       
         touristAttractionsElement = <>
             {touristAttractionsText}
             <ul>
@@ -47,6 +52,7 @@ const CityItem = ({ city, index, onDeleteCityHandler, onEditCityHandler }) => {
         <div className={capitalClass} >
             <h2 className={capitalTitleClass}>{title}</h2>
             <p>{name} city is located in {location.continent}, {location.country} and has population of {population} people.</p>
+            {perksList}
             {capitalText}
             {touristAttractionsElement}
             <button onClick={() => onDeleteCityHandler(index)}>Delete</button>
