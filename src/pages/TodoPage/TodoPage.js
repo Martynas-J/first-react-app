@@ -1,33 +1,55 @@
 import { useState } from "react"
-import TodoForm from "../../components/TotoPage/TodoForm"
-import TodoList from "../../components/TotoPage/TodoList"
+import TodoForm from "../../components/TodoPage/TodoForm"
+import TodoList from "../../components/TodoPage/TodoList"
 import "./TodoPage.css"
+import { Container } from "react-bootstrap"
 
 const TodoPages = () => {
 
 const [todo, setTodo] = useState([])
+const [editData, setEditData] = useState("")
+
 const addTodoHandler = (newDate) => {
+  if (editData !== "") {
+    setTodo(todo.map(item => (item.id === newDate.id ? newDate : item)));
+    setEditData("")
+  } else {
     setTodo(prevState => [newDate, ...prevState])
+  }
 }
 const addDoneHandler = (id) => {
+  setTodo(todo.map(item => (item.id === id ? {...item, isDone: !item.isDone} : item)));
+}
+const addDeleteHandler = (id) => {
   setTodo(prevState => {
-    const newState = [...prevState];
-    const newDate = newState.map(item => {
-      if (item.id === id) {
-        return {...item, isDone : true}
-      }
-      return item
-      })
-      return newDate;
+    const newState = prevState.filter(item => item.id !== id);
+      return newState;
   })
 }
+  const addEditHandler = (id) => {
+    const newState = [...todo];
+    const data = newState.filter(item => item.id === id);
+    setEditData( data)
+    
+  }
 
   return (
     <div>
+      <Container>
        <h1 className='todo-title'>TodoPages</h1> 
-            <TodoForm  onNewTodoHandler = {addTodoHandler} />      
-            <TodoList  todoList = {todo}  onAddDoneHandler = {addDoneHandler}/>
+            <TodoForm  
+                onNewTodoHandler = {addTodoHandler} 
+                editTodo={editData[0]}
+             />      
+            <TodoList  
+                todoList = {todo} 
+                onAddDoneHandler = {addDoneHandler}
+                onAddDeleteHandler = {addDeleteHandler}
+                onAddEditHandler = {addEditHandler}
+             />
+             </Container>
     </div>
+
   )
 }
 
@@ -49,3 +71,6 @@ export default TodoPages
 // 2.4. Sukūrimo datą (prisideda automatiškai)
 // 2.5. Done (nurodo ar užduotis jau atlikta)
 // 2.6. Data iki kada užduotį reikia atlikti
+
+// 6.1. Redaguojant užduotį id ir sukūrimo data lieka tokie patys.
+// 6.2. Redaguojant užduotį pridėti naują property, kuri nurodo kada buvo modifikuota užduotis. Redagavimo datą atvaizduoti ekrane.

@@ -1,9 +1,9 @@
 import TodoItem from "./TodoItem"
 
 
-const TodoList = ({ todoList, onAddDoneHandler }) => {
+const TodoList = ({ todoList, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler }) => {
     return (
-        todoList ?
+        todoList.length > 0 ?
             <div className="todo-Wrapper">
                 <h2>To Do List:</h2>
                 <div className="todo-content">
@@ -12,11 +12,14 @@ const TodoList = ({ todoList, onAddDoneHandler }) => {
                             <TodoItem
                                 key={index}
                                 todo={item}
-                                onAddDoneHandler={onAddDoneHandler} />
+                                onAddDoneHandler = {onAddDoneHandler} 
+                                onAddDeleteHandler = {onAddDeleteHandler}
+                                onAddEditHandler = {onAddEditHandler}
+                                 />
                         )
                     })}
                 </div>
-            </div> : " No To Do"
+            </div> : <h2>No To Do</h2> 
 
     )
 }
