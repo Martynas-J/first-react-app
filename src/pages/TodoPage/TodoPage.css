@@ -9,7 +9,7 @@
 }
 .todo-content{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
     gap: 20px;
 }
 .todo-item li{

@@ -8,21 +8,25 @@ const TodoPages = () => {
 const [todo, setTodo] = useState([])
 const addTodoHandler = (newDate) => {
     setTodo(prevState => [newDate, ...prevState])
-    console.log(todo)
+}
+const addDoneHandler = (id) => {
+  setTodo(prevState => {
+    const newState = [...prevState];
+    const newDate = newState.map(item => {
+      if (item.id === id) {
+        return {...item, isDone : true}
+      }
+      return item
+      })
+      return newDate;
+  })
 }
 
   return (
     <div>
        <h1 className='todo-title'>TodoPages</h1> 
-       <div className="todo-form">
-            <TodoForm  onNewTodoHandler = {addTodoHandler} />
-
-       </div>
-       <div className="todo-wrapper">
-            <TodoList 
-            todoList = {todo}
-            />
-       </div>
+            <TodoForm  onNewTodoHandler = {addTodoHandler} />      
+            <TodoList  todoList = {todo}  onAddDoneHandler = {addDoneHandler}/>
     </div>
   )
 }

@@ -20,21 +20,22 @@ const TodoForm = ({ onNewTodoHandler }) => {
     let month = newDate.getMonth() + 1;
     let year = newDate.getFullYear();
 
-    const currentDate = `${year}-${month}-${date}`
+    const createdDate = `${year}-${month}-${date}`
     const id = todoId()
-    const newData = { id, title, description, currentDate, isDone, finishTill }
+    const newData = { id, title, description, createdDate, isDone, finishTill }
+    onNewTodoHandler(newData)
     setTitle("");
     setDescription("");
     setIsDone(false)
     setFinishTill("")
-    onNewTodoHandler(newData)
   }
 
   return (
     <form onSubmit={addTodoHandler}>
+      <div>To Do Form:</div>
       <div className='todo-input'>
-        <label htmlFor={todoId + '-title'}>Title:</label>
-        <input type='text' id={todoId + '-title'} value={title} onChange={addTitleHandle}></input>
+        <label htmlFor={'title'}>Title:</label>
+        <input type='text' id={'title'} value={title} onChange={addTitleHandle}></input>
       </div>
       <div className='todo-input'>
         <label htmlFor='description'>Description:</label>
