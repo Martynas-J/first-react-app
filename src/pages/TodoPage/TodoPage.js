@@ -10,7 +10,7 @@ const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
 
 const addTodoHandler = (newDate) => {
-  if (editData !== "") {
+  if (editData) {
     setTodo(todo.map(item => (item.id === newDate.id ? newDate : item)));
     setEditData("")
   } else {
@@ -30,7 +30,6 @@ const addDeleteHandler = (id) => {
     const newState = [...todo];
     const data = newState.filter(item => item.id === id);
     setEditData( data)
-    
   }
 
   return (
