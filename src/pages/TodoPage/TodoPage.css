@@ -15,3 +15,16 @@
 .todo-item li{
     display: block;  
 }
+.todo-input{
+    display: flex;
+    justify-content: space-between;
+}
+.todo-input label{
+    font-weight: 700;
+}
+form{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: aliceblue;
+    width: 350px;
+}
