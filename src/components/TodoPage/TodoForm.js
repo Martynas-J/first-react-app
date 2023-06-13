@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { v4 as todoId } from 'uuid';
+import { getTodayDateHandler } from "../functions/DataFunctions";
 
 const TodoForm = ({ onNewTodoHandler, editTodo }) => {
   const [title, setTitle] = useState("")
@@ -31,24 +32,21 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setCreatedDate(createdDate);
   }
 
-  const getTodayDateHandler = () => {
-    const date = new Date()
-    const todayDate = date.toISOString()
-    return todayDate.slice(0, 10)
-  }
-  getTodayDateHandler()
-
   const addTodoHandler = (event) => {
     event.preventDefault();
     let newId = id
     let newCreatedDate = createdDate
+    let newFinishTill= finishTill
     if (!id) {
       newId = todoId()
     }
     if (!createdDate) {
       newCreatedDate = new Date()
     }
-    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill, editDate: getTodayDateHandler()}
+    if (!finishTill) {
+      newFinishTill = getTodayDateHandler()
+    }
+    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill : newFinishTill, editDate: getTodayDateHandler()}
     onNewTodoHandler(newData)
     setTitle("");
     setDescription("");

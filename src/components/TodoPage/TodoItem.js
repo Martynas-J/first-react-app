@@ -1,3 +1,4 @@
+import { getTodayDateHandler } from "../functions/DataFunctions"
 
 
 const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler }) => {
@@ -47,7 +48,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
             {descriptionElement}
             <div> Created Date: {createdDateText}</div>
             <div> Is Done: {isDoneText}</div>
-            <div> Finish Till: {finishTill}</div>
+            <div> Finish Till: {finishTill ? finishTill : getTodayDateHandler()}</div>
             <div> Time Left: {timeLeft}</div>
             {editDateText}
             {doneButton}

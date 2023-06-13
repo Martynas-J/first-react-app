@@ -1,13 +1,27 @@
-import { useState } from "react"
+import {useEffect, useState } from "react"
 import TodoForm from "../../components/TodoPage/TodoForm"
 import TodoList from "../../components/TodoPage/TodoList"
 import "./TodoPage.css"
 import { Container } from "react-bootstrap"
+import { getTodayDateHandler } from "../../components/functions/DataFunctions"
 
 const TodoPages = () => {
 
 const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
+
+
+const filteredList = (data) => {
+  const filteredOverTime = data.filter(item =>  item.finishTill === getTodayDateHandler())
+  const filteredTimeLeft = data.filter(item =>  item.finishTill !== getTodayDateHandler())
+  
+  const sortedTimeLeft = filteredTimeLeft.sort(function(a, b) {
+    let dateA = new Date(a.finishTill);
+    let dateB = new Date(b.finishTill);
+    return dateA - dateB;
+  });
+  setTodo([...sortedTimeLeft, ...filteredOverTime])
+}
 
 const addTodoHandler = (newData) => {
   if (editData) {
@@ -29,7 +43,6 @@ const addDoneHandler = (id) => {
     newState[index] = {...newState[index], isDone: !newState[index].isDone}
     return newState    
   })
- 
 }
 const addEditHandler = (id) => {
   const newState = [...todo];
@@ -47,6 +60,7 @@ const addDeleteHandler = (id) => {
     <div>
       <Container>
        <h1 className='todo-title'>TodoPages</h1> 
+       <input type="button" value="filter" onClick={() => filteredList(todo)}></input>
             <TodoForm  
                 onNewTodoHandler = {addTodoHandler} 
                 editTodo={editData}
@@ -84,3 +98,5 @@ export default TodoPages
 
 // 6.1. Redaguojant užduotį id ir sukūrimo data lieka tokie patys.
 // 6.2. Redaguojant užduotį pridėti naują property, kuri nurodo kada buvo modifikuota užduotis. Redagavimo datą atvaizduoti ekrane.
+
+// 7. Padaryti jog atliktos užduotys būtų atvaizduojamos pabaigoje, o dar neatliktos - pradžioje.
