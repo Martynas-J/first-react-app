@@ -1,7 +1,7 @@
 
 
 const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler }) => {
-    const { id, title, description, createdDate, isDone, finishTill } = todo
+    const { id, title, description, createdDate, isDone, finishTill, editDate } = todo
     let descriptionElement = ""
     if (description) {
         descriptionElement = <p> Description: {description}</p>
@@ -19,6 +19,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
     let createdDateText = `${createdYear}-${createdMonth}-${createdDay}`
     let timeLeft = ""
     let isDoneText = "no"
+    let editDateText = ""
     let doneButton = <button onClick={() => onAddDoneHandler(id)}>Done</button>
     let delButton = <button onClick={() => onAddDeleteHandler(id)}>Del</button>
     let editButton = <button onClick={() => onAddEditHandler(id)}>Edit</button>
@@ -35,9 +36,10 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
 
     if (isDone) {
         isDoneText = "Yes"
-        // doneButton = ""
     }
-
+    if (editDate) {
+        editDateText = <div> Edited: {`${editDate.getFullYear()}-${editDate.getMonth()}-${editDate.getDate()}`}</div>
+    }
     return (
         <ul className="todo-item">
             <span> Id: {id}</span>
@@ -50,6 +52,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
             {doneButton}
             {delButton}
             {editButton}
+            {editDateText}
         </ul>
     )
 }

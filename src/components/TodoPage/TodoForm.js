@@ -8,6 +8,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
   const [finishTill, setFinishTill] = useState("")
   const [id, setId] = useState("")
   const [createdDate, setCreatedDate] = useState("")
+  const [editDate, setEditDate] = useState("")
 
   const addTitleHandle = (event) => setTitle(event.target.value)
   const addDescriptionHandle = (event) => setDescription(event.target.value)
@@ -17,10 +18,10 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
 
   useEffect(() => {
     if (editTodo) {
+      setEditDate(new Date())
       editTodoHandler(editTodo)
     }
   }, [editTodo])
-
   const editTodoHandler = (editTodo) => {
     let { title, description, isDone, finishTill, id, createdDate } = editTodo
     setTitle(title);
@@ -41,7 +42,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     if (!createdDate) {
       newCreatedDate = new Date()
     }
-    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill }
+    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill, editDate }
     onNewTodoHandler(newData)
     setTitle("");
     setDescription("");
@@ -49,6 +50,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setFinishTill("")
     setId("")
     setCreatedDate("");
+    setEditDate("")
   }
 
   return (
