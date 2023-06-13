@@ -9,36 +9,47 @@ const TodoPages = () => {
 const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
 
-const addTodoHandler = (newDate) => {
+const addTodoHandler = (newData) => {
   if (editData) {
-    setTodo(todo.map(item => (item.id === newDate.id ? newDate : item)));
+    const index = todo.findIndex(item => item.id === newData.id )
+    setTodo(prevState => {
+      let newState = [...prevState]
+      newState[index] = newData
+      return newState          
+      })
     setEditData("")
   } else {
-    setTodo(prevState => [newDate, ...prevState])
+    setTodo(prevState => [newData, ...prevState])
   }
 }
 const addDoneHandler = (id) => {
-  setTodo(todo.map(item => (item.id === id ? {...item, isDone: !item.isDone} : item)));
+  const index = todo.findIndex(item => item.id === id)
+  setTodo(prevState =>{
+    let newState = [...prevState]
+    newState[index] = {...newState[index], isDone: !newState[index].isDone}
+    return newState    
+  })
+ 
 }
+const addEditHandler = (id) => {
+  const newState = [...todo];
+  const data = newState.find(item => item.id === id);
+  setEditData(data)
+}
+
 const addDeleteHandler = (id) => {
   setTodo(prevState => {
     const newState = prevState.filter(item => item.id !== id);
       return newState;
   })
 }
-  const addEditHandler = (id) => {
-    const newState = [...todo];
-    const data = newState.filter(item => item.id === id);
-    setEditData( data)
-  }
-
   return (
     <div>
       <Container>
        <h1 className='todo-title'>TodoPages</h1> 
             <TodoForm  
                 onNewTodoHandler = {addTodoHandler} 
-                editTodo={editData[0]}
+                editTodo={editData}
              />      
             <TodoList  
                 todoList = {todo} 

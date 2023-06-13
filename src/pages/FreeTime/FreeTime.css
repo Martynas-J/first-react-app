@@ -6,6 +6,7 @@
     background-color: rgb(84, 112, 112);
     border-radius: 10px;
     padding: 20px;
+    max-width: 600px;
 }
 .button-container{
     display: grid;

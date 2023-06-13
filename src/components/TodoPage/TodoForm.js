@@ -8,7 +8,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
   const [finishTill, setFinishTill] = useState("")
   const [id, setId] = useState("")
   const [createdDate, setCreatedDate] = useState("")
-  const [editDate, setEditDate] = useState("")
+
 
   const addTitleHandler = event => setTitle(event.target.value)
   const addDescriptionHandler = event => setDescription(event.target.value)
@@ -18,7 +18,6 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
 
   useEffect(() => {
     if (editTodo) {
-      setEditDate(new Date())
       editTodoHandler(editTodo)
     }
   }, [editTodo])
@@ -32,6 +31,13 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setCreatedDate(createdDate);
   }
 
+  const getTodayDateHandler = () => {
+    const date = new Date()
+    const todayDate = date.toISOString()
+    return todayDate.slice(0, 10)
+  }
+  getTodayDateHandler()
+
   const addTodoHandler = (event) => {
     event.preventDefault();
     let newId = id
@@ -42,7 +48,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     if (!createdDate) {
       newCreatedDate = new Date()
     }
-    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill, editDate }
+    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill, editDate: getTodayDateHandler()}
     onNewTodoHandler(newData)
     setTitle("");
     setDescription("");
@@ -50,7 +56,6 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setFinishTill("")
     setId("")
     setCreatedDate("");
-    setEditDate("")
   }
   return (
     <form onSubmit={addTodoHandler}>
@@ -69,7 +74,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
       </div>
       <div className='todo-input'>
         <label htmlFor='finish-till'>Finish till:</label>
-        <input type='date' id='finish-till' value={finishTill} onChange={addFinishTillHandler}></input>
+        <input type='date' id='finish-till' value={finishTill} min={getTodayDateHandler()} onChange={addFinishTillHandler}></input>
       </div>
 
       <div className="save-button">

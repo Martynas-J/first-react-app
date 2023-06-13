@@ -38,7 +38,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
         isDoneText = "Yes"
     }
     if (editDate) {
-        editDateText = <div> Edited: {`${editDate.getFullYear()}-${editDate.getMonth()}-${editDate.getDate()}`}</div>
+        editDateText = <div> Edited: {editDate}</div>
     }
     return (
         <ul className="todo-item">
@@ -49,10 +49,10 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
             <div> Is Done: {isDoneText}</div>
             <div> Finish Till: {finishTill}</div>
             <div> Time Left: {timeLeft}</div>
+            {editDateText}
             {doneButton}
             {delButton}
             {editButton}
-            {editDateText}
         </ul>
     )
 }
