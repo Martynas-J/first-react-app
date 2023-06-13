@@ -10,10 +10,10 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
   const [createdDate, setCreatedDate] = useState("")
   const [editDate, setEditDate] = useState("")
 
-  const addTitleHandle = (event) => setTitle(event.target.value)
-  const addDescriptionHandle = (event) => setDescription(event.target.value)
-  const addIsDoneHandle = (event) => setIsDone(event.target.checked)
-  const addFinishTillHandle = (event) => setFinishTill(event.target.value)
+  const addTitleHandler = event => setTitle(event.target.value)
+  const addDescriptionHandler = event => setDescription(event.target.value)
+  const addIsDoneHandler = event => setIsDone(event.target.checked)
+  const addFinishTillHandler = event => setFinishTill(event.target.value)
 
 
   useEffect(() => {
@@ -52,25 +52,24 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setCreatedDate("");
     setEditDate("")
   }
-
   return (
     <form onSubmit={addTodoHandler}>
       <div>To Do Form:</div>
       <div className='todo-input'>
         <label htmlFor={'title'}>Title:</label>
-        <input type='text' id={'title'} value={title} onChange={addTitleHandle}></input>
+        <input type='text' id={'title'} value={title} onChange={addTitleHandler}></input>
       </div>
       <div className='todo-input'>
         <label htmlFor='description'>Description:</label>
-        <textarea id='description' value={description} onChange={addDescriptionHandle}></textarea>
+        <textarea id='description' value={description} onChange={addDescriptionHandler}></textarea>
       </div>
       <div className='todo-input'>
         <label htmlFor='is-done'>Is Done:</label>
-        <input type='checkbox' id='is-done' checked={isDone} onChange={addIsDoneHandle}></input>
+        <input type='checkbox' id='is-done' checked={isDone} onChange={addIsDoneHandler}></input>
       </div>
       <div className='todo-input'>
         <label htmlFor='finish-till'>Finish till:</label>
-        <input type='date' id='finish-till' value={finishTill} onChange={addFinishTillHandle}></input>
+        <input type='date' id='finish-till' value={finishTill} onChange={addFinishTillHandler}></input>
       </div>
 
       <div className="save-button">

@@ -3,7 +3,7 @@ import TodoItem from "./TodoItem"
 
 const TodoList = ({ todoList, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler }) => {
     return (
-        todoList.length > 0 ?
+        todoList && todoList.length > 0 ?
             <div className="todo-Wrapper">
                 <h2>To Do List:</h2>
                 <div className="todo-content">

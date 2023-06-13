@@ -16,7 +16,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
     let createdMonth = createdDate.getMonth() + 1;
     let createdYear = createdDate.getFullYear();
 
-    let createdDateText = `${createdYear}-${createdMonth}-${createdDay}`
+    let createdDateText = `${createdYear}-${createdMonth.toString().padStart(2, "0")}-${createdDay.toString().padStart(2, "0")}`
     let timeLeft = ""
     let isDoneText = "no"
     let editDateText = ""
