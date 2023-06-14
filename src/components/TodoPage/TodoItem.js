@@ -8,7 +8,8 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
         descriptionElement = <p> Description: {description}</p>
     }
 
-    let finishTillDate = new Date(finishTill)
+    let finishTillDate = new Date(finishTill)  
+
     const finishDay = finishTillDate.getDate();
     const finishMonth = finishTillDate.getMonth() + 1;
     const finishYear = finishTillDate.getFullYear();
@@ -29,7 +30,11 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
     if (finishYear > createdYear) {
         timeLeft = ` ${finishYear - createdYear} Year`
     } else if (finishMonth > createdMonth) {
-        timeLeft = `${finishMonth - createdMonth} Month`
+        if (finishMonth - createdMonth === 1) {
+            timeLeft = `${30 - finishDay } Day`
+        } else {
+            timeLeft = `${finishMonth - createdMonth} Month`
+        }
     } else if (finishDay > createdDay) {
         timeLeft = `${finishDay - createdDay} Day`
     } else {
