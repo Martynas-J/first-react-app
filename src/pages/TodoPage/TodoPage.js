@@ -43,6 +43,7 @@ const TodoPages = () => {
 const [todo, setTodo] = useState(defaultList)
 const [editData, setEditData] = useState("")
 const [filteredData, setFilteredData] = useState([])
+const [reverseList, setReverseList] = useState(false)
 
 const filteredList = (data) => {
   const filteredDone = data.filter(item =>  item.isDone === true)
@@ -99,33 +100,40 @@ const addEditHandler = (id) => {
 }
 
 const filterByCategoryHandler = (category, findInputData) => {
+  setReverseList(prevState => !prevState)
+  let output
   if (findInputData === "") {
     setFilteredData([])
     setTodo(prevState => {
     const newState = [... prevState]
-    return newState.sort(function(a, b) {
-
+    const newList =  newState.sort(function(a, b) {
     if (category === "title") {
-        return a.title.localeCompare(b.title)
+      output = a.title.localeCompare(b.title)
 
     }else if (category === "description") {
-        return a.description.localeCompare(b.description)
+        output = a.description.localeCompare(b.description)
 
     }else if (category === "createdDate") {
         let dateA = new Date(a.createdDate);
         let dateB = new Date(b.createdDate);    
-        return dateA - dateB;
+        output = dateA - dateB;
         
     }else if (category === "finishTill") {
       let dateA = new Date(a.finishTill);
       let dateB = new Date(b.finishTill);
-      return dateA - dateB;
+      output = dateA - dateB;
   }
-  })})
+  return output
+  })
+  if (reverseList) {
+    return newList.reverse()
+  }else {
+    return newList
+  }
+})
   }else {
     setFilteredData(() => {
       const newState = [...todo]
-      let output
       if (category === "title") { 
         output = newState.filter(item => item.title.includes(findInputData))
       }
