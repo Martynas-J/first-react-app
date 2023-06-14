@@ -36,11 +36,9 @@ const defaultList = [
   },
 ]
 
-
-
 const TodoPages = () => {
 
-const [todo, setTodo] = useState(defaultList)
+const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
 const [filteredData, setFilteredData] = useState([])
 
@@ -77,11 +75,11 @@ const addTodoHandler = (newData) => {
     setTodo(prevState => {
       let newState = [...prevState]
       newState[index] = newData
-      return filteredList(newState)          
+      return newState         
       })
     setEditData("")
   } else {
-    setTodo(prevState => filteredList([newData, ...prevState]))
+    setTodo(prevState => [newData, ...prevState])
   }
 }
 const addDoneHandler = (id) => {
@@ -89,7 +87,7 @@ const addDoneHandler = (id) => {
   setTodo(prevState =>{
     let newState = [...prevState]
     newState[index] = {...newState[index], isDone: !newState[index].isDone}
-    return filteredList(newState)    
+    return newState    
   })
 }
 const addEditHandler = (id) => {
@@ -115,7 +113,7 @@ const filterByCategoryHandler = (category, findText) => {
         let dateA = new Date(a.createdDate);
         let dateB = new Date(b.createdDate);    
         return dateA - dateB;
-        
+
     }else if (category === "finishTill") {
       let dateA = new Date(a.finishTill);
       let dateB = new Date(b.finishTill);
@@ -157,7 +155,7 @@ const addDeleteHandler = (id) => {
              />
             <TodoFilter onFilterByCategoryHandler={filterByCategoryHandler}/>
             <TodoList  
-                todoList = {filteredData.length > 0 ? filteredData : todo} 
+                todoList = {filteredData.length > 0 ? filteredList(filteredData) : filteredList(todo)} 
                 onAddDoneHandler = {addDoneHandler}
                 onAddDeleteHandler = {addDeleteHandler}
                 onAddEditHandler = {addEditHandler}
