@@ -104,14 +104,18 @@ const filterByCategoryHandler = (category, findText) => {
     setTodo(prevState => {
     const newState = [... prevState]
     return newState.sort(function(a, b) {
+
     if (category === "title") {
         return a.title.localeCompare(b.title)
+
     }else if (category === "description") {
         return a.description.localeCompare(b.description)
+
     }else if (category === "createdDate") {
         let dateA = new Date(a.createdDate);
         let dateB = new Date(b.createdDate);    
         return dateA - dateB;
+        
     }else if (category === "finishTill") {
       let dateA = new Date(a.finishTill);
       let dateB = new Date(b.finishTill);
