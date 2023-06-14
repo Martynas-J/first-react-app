@@ -11,6 +11,7 @@ const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
 const [category, setCategory] = useState("")
 const [findText, setFindText] = useState("")
+const [filteredData, setFilteredData] = useState([])
 
 const filteredList = (data) => {
   const filteredDone = data.filter(item =>  item.isDone === true)
@@ -69,6 +70,7 @@ const addCategoryHandler = (event) => setCategory(event.target.value)
 const addFindTextHandler = (event) => setFindText(event.target.value)
 const FilterByCategoryHandler = () => {
   if (findText === "") {
+    setFilteredData([])
     setTodo(prevState => {
     const newState = [... prevState]
     return newState.sort(function(a, b) {
@@ -79,11 +81,19 @@ const FilterByCategoryHandler = () => {
     }
   })})
   }else {
-
+    setFilteredData(() => {
+      const newState = [...todo]
+      if (category === "title") { 
+        return newState.filter(item => item.title.includes(findText))
+      }
+      if (category === "description") {
+        return newState.filter(item => item.description.includes(findText))
+      }
+    })
+    
   }
-  
 }
-
+console.log(filteredData)
 const addDeleteHandler = (id) => {
   setTodo(prevState => {
     const newState = prevState.filter(item => item.id !== id);
@@ -109,7 +119,7 @@ const addDeleteHandler = (id) => {
                 <input type="button" value="Filter" onClick={FilterByCategoryHandler}></input> 
              </div>     
             <TodoList  
-                todoList = {todo} 
+                todoList = {filteredData.length > 0 ? filteredData : todo} 
                 onAddDoneHandler = {addDoneHandler}
                 onAddDeleteHandler = {addDeleteHandler}
                 onAddEditHandler = {addEditHandler}
