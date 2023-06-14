@@ -24,6 +24,7 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
     let doneButton = <button onClick={() => onAddDoneHandler(id)}>Done</button>
     let delButton = <button onClick={() => onAddDeleteHandler(id)}>Del</button>
     let editButton = <button onClick={() => onAddEditHandler(id)}>Edit</button>
+    let classes = "todo-item"
 
     if (finishYear > createdYear) {
         timeLeft = ` ${finishYear - createdYear} Year`
@@ -33,17 +34,19 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
         timeLeft = `${finishDay - createdDay} Day`
     } else {
         timeLeft = `time is over`
+        classes = "todo-item time-over"
     }
 
     if (isDone) {
         isDoneText = "Yes"
+        classes = "todo-item done"
     }
     if (editDate) {
         editDateText = <div> Edited: {editDate}</div>
     }
     return (
-        <ul className="todo-item">
-            <span> Id: {id}</span>
+        <ul className={classes}>
+            {/* <span> Id: {id}</span> */}
             <h3> Title: {title}</h3>
             {descriptionElement}
             <div> Created Date: {createdDateText}</div>

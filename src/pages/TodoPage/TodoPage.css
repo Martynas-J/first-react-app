@@ -28,3 +28,9 @@ form{
     background-color: aliceblue;
     width: 350px;
 }
+.todo-item.done{
+color: green;
+}
+.todo-item.time-over{
+    color: rgb(221, 117, 117)
+}

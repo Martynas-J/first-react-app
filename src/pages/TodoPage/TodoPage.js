@@ -10,17 +10,31 @@ const TodoPages = () => {
 const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
 
-
 const filteredList = (data) => {
-  const filteredOverTime = data.filter(item =>  item.finishTill === getTodayDateHandler())
-  const filteredTimeLeft = data.filter(item =>  item.finishTill !== getTodayDateHandler())
-  
+  const filteredDone = data.filter(item =>  item.isDone === true)
+  const filteredNotDone = data.filter(item =>  item.isDone !== true)
+
+  const filteredOverTime = filteredNotDone.filter(item =>  item.finishTill === getTodayDateHandler())
+  const filteredTimeLeft = filteredNotDone.filter(item =>  item.finishTill !== getTodayDateHandler())
+
   const sortedTimeLeft = filteredTimeLeft.sort(function(a, b) {
     let dateA = new Date(a.finishTill);
     let dateB = new Date(b.finishTill);
     return dateA - dateB;
   });
-  setTodo([...sortedTimeLeft, ...filteredOverTime])
+
+  const sortedIsDone = filteredDone.sort(function(a, b) {
+    let dateA = new Date(a.finishTill);
+    let dateB = new Date(b.finishTill);
+    return dateA - dateB;
+  });
+  const sortedOverTime = filteredOverTime.sort(function(a, b) {
+    let dateA = new Date(a.editDate);
+    let dateB = new Date(b.editDate);
+    return dateA - dateB;
+  });
+
+  return [...sortedTimeLeft, ...sortedIsDone, ...sortedOverTime]
 }
 
 const addTodoHandler = (newData) => {
@@ -29,11 +43,11 @@ const addTodoHandler = (newData) => {
     setTodo(prevState => {
       let newState = [...prevState]
       newState[index] = newData
-      return newState          
+      return filteredList(newState)          
       })
     setEditData("")
   } else {
-    setTodo(prevState => [newData, ...prevState])
+    setTodo(prevState => filteredList([newData, ...prevState]))
   }
 }
 const addDoneHandler = (id) => {
@@ -41,7 +55,7 @@ const addDoneHandler = (id) => {
   setTodo(prevState =>{
     let newState = [...prevState]
     newState[index] = {...newState[index], isDone: !newState[index].isDone}
-    return newState    
+    return filteredList(newState)    
   })
 }
 const addEditHandler = (id) => {
@@ -60,7 +74,6 @@ const addDeleteHandler = (id) => {
     <div>
       <Container>
        <h1 className='todo-title'>TodoPages</h1> 
-       <input type="button" value="filter" onClick={() => filteredList(todo)}></input>
             <TodoForm  
                 onNewTodoHandler = {addTodoHandler} 
                 editTodo={editData}
