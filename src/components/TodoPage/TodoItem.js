@@ -1,4 +1,4 @@
-import { getTodayDateHandler } from "../functions/DataFunctions"
+import { getFormedDate } from "../functions/DataFunctions"
 
 
 const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler }) => {
@@ -14,11 +14,12 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
     const finishMonth = finishTillDate.getMonth() + 1;
     const finishYear = finishTillDate.getFullYear();
 
-    let createdDay = createdDate.getDate();
-    let createdMonth = createdDate.getMonth() + 1;
-    let createdYear = createdDate.getFullYear();
+    let createdFullDate = new Date(createdDate)  
+    let createdDay = createdFullDate.getDate();
+    let createdMonth = createdFullDate.getMonth() + 1;
+    let createdYear = createdFullDate.getFullYear();
 
-    let createdDateText = `${createdYear}-${createdMonth.toString().padStart(2, "0")}-${createdDay.toString().padStart(2, "0")}`
+    // let createdDateText = `${createdYear}-${createdMonth.toString().padStart(2, "0")}-${createdDay.toString().padStart(2, "0")}`
     let timeLeft = ""
     let isDoneText = "no"
     let editDateText = ""
@@ -54,9 +55,9 @@ const TodoItem = ({ todo, onAddDoneHandler, onAddDeleteHandler, onAddEditHandler
             {/* <span> Id: {id}</span> */}
             <h3> Title: {title}</h3>
             {descriptionElement}
-            <div> Created Date: {createdDateText}</div>
+            <div> Created Date: {createdDate}</div>
             <div> Is Done: {isDoneText}</div>
-            <div> Finish Till: {finishTill ? finishTill : getTodayDateHandler()}</div>
+            <div> Finish Till: {finishTill ? finishTill : getFormedDate()}</div>
             <div> Time Left: {timeLeft}</div>
             {editDateText}
             {doneButton}

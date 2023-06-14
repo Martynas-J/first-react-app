@@ -3,22 +3,53 @@ import TodoForm from "../../components/TodoPage/TodoForm"
 import TodoList from "../../components/TodoPage/TodoList"
 import "./TodoPage.css"
 import { Container } from "react-bootstrap"
-import { getTodayDateHandler } from "../../components/functions/DataFunctions"
+import { getFormedDate } from "../../components/functions/DataFunctions"
+import TodoFilter from "../../components/TodoPage/TodoFilter"
+
+const defaultList = [
+  {
+    id: 1,
+    title: "aaaaa",
+    description: "bbbbb",
+    createdDate: "2021-10-15",
+    isDone: false,
+    finishTill: "2023-12-01",
+    editDate: "2021-10-15"
+  },
+  {
+    id: 1,
+    title: "eeeeee",
+    description: "bbbbb",
+    createdDate: "2021-11-10",
+    isDone: false,
+    finishTill: "2023-01-01",
+    editDate: "2021-11-10"
+  },
+  {
+    id: 1,
+    title: "fffff",
+    description: "ccccccccc",
+    createdDate: "2021-05-15",
+    isDone: false,
+    finishTill: "2023-10-01",
+    editDate: "2021-05-15"
+  },
+]
+
+
 
 const TodoPages = () => {
 
-const [todo, setTodo] = useState([])
+const [todo, setTodo] = useState(defaultList)
 const [editData, setEditData] = useState("")
-const [category, setCategory] = useState("")
-const [findText, setFindText] = useState("")
 const [filteredData, setFilteredData] = useState([])
 
 const filteredList = (data) => {
   const filteredDone = data.filter(item =>  item.isDone === true)
   const filteredNotDone = data.filter(item =>  item.isDone !== true)
 
-  const filteredOverTime = filteredNotDone.filter(item =>  item.finishTill === getTodayDateHandler())
-  const filteredTimeLeft = filteredNotDone.filter(item =>  item.finishTill !== getTodayDateHandler())
+  const filteredOverTime = filteredNotDone.filter(item =>  item.finishTill === getFormedDate())
+  const filteredTimeLeft = filteredNotDone.filter(item =>  item.finishTill !== getFormedDate())
 
   const sortedTimeLeft = filteredTimeLeft.sort(function(a, b) {
     let dateA = new Date(a.finishTill);
@@ -66,19 +97,26 @@ const addEditHandler = (id) => {
   const data = newState.find(item => item.id === id);
   setEditData(data)
 }
-const addCategoryHandler = (event) => setCategory(event.target.value)
-const addFindTextHandler = (event) => setFindText(event.target.value)
-const FilterByCategoryHandler = () => {
+
+const filterByCategoryHandler = (category, findText) => {
   if (findText === "") {
     setFilteredData([])
     setTodo(prevState => {
     const newState = [... prevState]
     return newState.sort(function(a, b) {
     if (category === "title") {
-      return a.title.localeCompare(b.title)
+        return a.title.localeCompare(b.title)
     }else if (category === "description") {
-      return a.description.localeCompare(b.description)
-    }
+        return a.description.localeCompare(b.description)
+    }else if (category === "createdDate") {
+        let dateA = new Date(a.createdDate);
+        let dateB = new Date(b.createdDate);    
+        return dateA - dateB;
+    }else if (category === "finishTill") {
+      let dateA = new Date(a.finishTill);
+      let dateB = new Date(b.finishTill);
+      return dateA - dateB;
+  }
   })})
   }else {
     setFilteredData(() => {
@@ -89,11 +127,16 @@ const FilterByCategoryHandler = () => {
       if (category === "description") {
         return newState.filter(item => item.description.includes(findText))
       }
+      if (category === "createdDate") {
+        return newState.filter(item => getFormedDate(item.createdDate).includes(findText))
+      }
+      if (category === "finishTill") {
+        return newState.filter(item => getFormedDate(item.finishTill).includes(findText))
+      }
     })
     
   }
 }
-console.log(filteredData)
 const addDeleteHandler = (id) => {
   setTodo(prevState => {
     const newState = prevState.filter(item => item.id !== id);
@@ -108,16 +151,7 @@ const addDeleteHandler = (id) => {
                 onNewTodoHandler = {addTodoHandler} 
                 editTodo={editData}
              />
-             <div className="filter">
-              <label htmlFor="find-text">Find By Category</label>
-              <input type="text" id="find-text" value={findText} onChange={addFindTextHandler}></input>
-                <select onChange={addCategoryHandler}>
-                  <option >Category:</option>
-                  <option value="title">Title</option>
-                  <option value="description">Description</option>
-                </select>
-                <input type="button" value="Filter" onClick={FilterByCategoryHandler}></input> 
-             </div>     
+            <TodoFilter onFilterByCategoryHandler={filterByCategoryHandler}/>
             <TodoList  
                 todoList = {filteredData.length > 0 ? filteredData : todo} 
                 onAddDoneHandler = {addDoneHandler}
@@ -126,7 +160,6 @@ const addDeleteHandler = (id) => {
              />
              </Container>
     </div>
-
   )
 }
 

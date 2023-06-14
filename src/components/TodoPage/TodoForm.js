@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { v4 as todoId } from 'uuid';
-import { getTodayDateHandler } from "../functions/DataFunctions";
+import { getFormedDate } from "../functions/DataFunctions";
 
 const TodoForm = ({ onNewTodoHandler, editTodo }) => {
   const [title, setTitle] = useState("")
@@ -41,12 +41,12 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
       newId = todoId()
     }
     if (!createdDate) {
-      newCreatedDate = new Date()
+      newCreatedDate = getFormedDate()
     }
     if (!finishTill) {
-      newFinishTill = getTodayDateHandler()
+      newFinishTill = getFormedDate()
     }
-    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill : newFinishTill, editDate: getTodayDateHandler()}
+    const newData = { id: newId, title, description, createdDate: newCreatedDate, isDone, finishTill : newFinishTill, editDate: getFormedDate()}
     onNewTodoHandler(newData)
     setTitle("");
     setDescription("");
@@ -72,7 +72,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
       </div>
       <div className='todo-input'>
         <label htmlFor='finish-till'>Finish till:</label>
-        <input type='date' id='finish-till' value={finishTill} min={getTodayDateHandler()} onChange={addFinishTillHandler}></input>
+        <input type='date' id='finish-till' value={finishTill} min={getFormedDate()} onChange={addFinishTillHandler}></input>
       </div>
 
       <div className="save-button">
