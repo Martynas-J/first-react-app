@@ -9,6 +9,8 @@ const TodoPages = () => {
 
 const [todo, setTodo] = useState([])
 const [editData, setEditData] = useState("")
+const [category, setCategory] = useState("")
+const [findText, setFindText] = useState("")
 
 const filteredList = (data) => {
   const filteredDone = data.filter(item =>  item.isDone === true)
@@ -63,6 +65,24 @@ const addEditHandler = (id) => {
   const data = newState.find(item => item.id === id);
   setEditData(data)
 }
+const addCategoryHandler = (event) => setCategory(event.target.value)
+const addFindTextHandler = (event) => setFindText(event.target.value)
+const FilterByCategoryHandler = () => {
+  if (findText === "") {
+    setTodo(prevState => {
+    const newState = [... prevState]
+    return newState.sort(function(a, b) {
+    if (category === "title") {
+      return a.title.localeCompare(b.title)
+    }else if (category === "description") {
+      return a.description.localeCompare(b.description)
+    }
+  })})
+  }else {
+
+  }
+  
+}
 
 const addDeleteHandler = (id) => {
   setTodo(prevState => {
@@ -77,7 +97,17 @@ const addDeleteHandler = (id) => {
             <TodoForm  
                 onNewTodoHandler = {addTodoHandler} 
                 editTodo={editData}
-             />      
+             />
+             <div className="filter">
+              <label htmlFor="find-text">Find By Category</label>
+              <input type="text" id="find-text" value={findText} onChange={addFindTextHandler}></input>
+                <select onChange={addCategoryHandler}>
+                  <option >Category</option>
+                  <option value="title">Title</option>
+                  <option value="description">Description</option>
+                </select>
+                <input type="button" value="Filter" onClick={FilterByCategoryHandler}></input> 
+             </div>     
             <TodoList  
                 todoList = {todo} 
                 onAddDoneHandler = {addDoneHandler}
@@ -113,3 +143,5 @@ export default TodoPages
 // 6.2. Redaguojant užduotį pridėti naują property, kuri nurodo kada buvo modifikuota užduotis. Redagavimo datą atvaizduoti ekrane.
 
 // 7. Padaryti jog atliktos užduotys būtų atvaizduojamos pabaigoje, o dar neatliktos - pradžioje.
+
+// 8. Pridėti galimybė filtruoti pagal užduočių pavadinimas ar aprašymus.
