@@ -102,7 +102,7 @@ const addDeleteHandler = (id) => {
               <label htmlFor="find-text">Find By Category</label>
               <input type="text" id="find-text" value={findText} onChange={addFindTextHandler}></input>
                 <select onChange={addCategoryHandler}>
-                  <option >Category</option>
+                  <option >Category:</option>
                   <option value="title">Title</option>
                   <option value="description">Description</option>
                 </select>
