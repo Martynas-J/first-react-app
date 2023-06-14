@@ -40,7 +40,7 @@ const defaultList = [
 
 const TodoPages = () => {
 
-const [todo, setTodo] = useState([])
+const [todo, setTodo] = useState(defaultList)
 const [editData, setEditData] = useState("")
 const [filteredData, setFilteredData] = useState([])
 
@@ -98,8 +98,8 @@ const addEditHandler = (id) => {
   setEditData(data)
 }
 
-const filterByCategoryHandler = (category, findText) => {
-  if (findText === "") {
+const filterByCategoryHandler = (category, findInputData) => {
+  if (findInputData === "") {
     setFilteredData([])
     setTodo(prevState => {
     const newState = [... prevState]
@@ -127,16 +127,16 @@ const filterByCategoryHandler = (category, findText) => {
       const newState = [...todo]
       let output
       if (category === "title") { 
-        output = newState.filter(item => item.title.includes(findText))
+        output = newState.filter(item => item.title.includes(findInputData))
       }
       if (category === "description") {
-        output = newState.filter(item => item.description.includes(findText))
+        output = newState.filter(item => item.description.includes(findInputData))
       }
       if (category === "createdDate") {
-        output = newState.filter(item => getFormedDate(item.createdDate).includes(findText))
+        output = newState.filter(item => getFormedDate(item.createdDate).includes(findInputData))
       }
       if (category === "finishTill") {
-        output = newState.filter(item => getFormedDate(item.finishTill).includes(findText))
+        output = newState.filter(item => getFormedDate(item.finishTill).includes(findInputData))
       } 
       return filteredList(output)
     })
