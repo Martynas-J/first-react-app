@@ -1,33 +1,12 @@
 import { useState } from "react"
 import { Container } from "react-bootstrap"
+import AIForm from "./AIForm"
 
 const AIPage = () => {
+    const [outputText, setOutputText] = useState(null)
 
-    const [name, setName] = useState("jonas")
-    const [nationalize, setNationalize] = useState("")
-    const [genderize, setGenderize] = useState("")
-    const [agify, setAgify] = useState("")
 
-    let outputText = ""
-
-    const addNameHandler = event => setName(event.target.value)
-    
-    const getData = (event) => {
-        event.preventDefault()
-        fetch(`https://api.nationalize.io/?name=${name}`)
-            .then(res => res.json())
-            .then(data => setNationalize(data))
-
-        fetch(`https://api.genderize.io?name=${name}`)
-            .then(res => res.json())
-            .then(data => setGenderize(data))
-
-        fetch(`https://api.agify.io/?name=${name}`)
-            .then(res => res.json())
-            .then(data => setAgify(data))
-    }
-    if (nationalize, genderize, agify) {
-
+    const allDataHandler = (nationalize, genderize, agify, name) => {
         const personNameProbability = nationalize.country[0].probability
         const personCountry_id = nationalize.country[0].country_id
 
@@ -37,21 +16,16 @@ const AIPage = () => {
 
         const personAge = agify.age
 
-        outputText = `Name ${name} by nationality (highest percentage ${personNameProbability} %) is from  country ${personCountry_id} . ${name} according to gender is ${personGender} (${personGenderProbability}%). We count ${personGenderCount} ${personGender} ${name}. ${name} average by age is ${personAge} year`
+        const output = <>{`Name ${name} by nationality (highest percentage ${personNameProbability} %) is from  country ${personCountry_id} . ${name} according to gender is ${personGender} (${personGenderProbability}%). We count ${personGenderCount} ${personGender} ${name}. ${name} average by age is ${personAge} year`}</>
+        setOutputText(output)
     }
-
     return (
         <Container>
             <h1>AIPage</h1>
-            <form onSubmit={getData}>
-                <label htmlFor="name">Write Name:</label>
-                <input id="name" type="text" value={name} onChange={addNameHandler}></input>
-                <input type="submit" value="Get Name Info " ></input>
-            </form>
+            <AIForm allData={allDataHandler} />
             <span>{outputText}</span>
 
         </Container>
-
     )
 }
 
