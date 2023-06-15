@@ -1,29 +1,33 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Container } from "react-bootstrap"
 import AIForm from "./AIForm"
 
 const AIPage = () => {
-    const [outputText, setOutputText] = useState(null)
+    const [personData, setPersonData] = useState("")
 
-
-    const allDataHandler = (nationalize, genderize, agify, name) => {
-        const personNameProbability = nationalize.country[0].probability
-        const personCountry_id = nationalize.country[0].country_id
-
-        const personGender = genderize.gender
-        const personGenderProbability = genderize.probability
-        const personGenderCount = genderize.count
-
-        const personAge = agify.age
-
-        const output = <>{`Name ${name} by nationality (highest percentage ${personNameProbability} %) is from  country ${personCountry_id} . ${name} according to gender is ${personGender} (${personGenderProbability}%). We count ${personGenderCount} ${personGender} ${name}. ${name} average by age is ${personAge} year`}</>
-        setOutputText(output)
+    const allDataHandler = (data) => {
+        setPersonData(data)
     }
+    let output = ""
+    if (personData) {
+        const { nationalizeData, genderizeData, agifyData, name } = personData
+        const personNameProbability = nationalizeData.country[0].probability
+        const personCountry_id = nationalizeData.country[0].country_id
+
+        const personGender = genderizeData.gender
+        const personGenderProbability = genderizeData.probability
+        const personGenderCount = genderizeData.count
+
+        const personAge = agifyData.age
+
+        output = `Name ${name} by nationality (highest percentage ${personNameProbability} %) is from  country ${personCountry_id} . ${name} according to gender is ${personGender} (${personGenderProbability}%). We count ${personGenderCount} ${personGender} ${name}. ${name} average by age is ${personAge} year`
+    }
+
     return (
         <Container>
             <h1>AIPage</h1>
             <AIForm allData={allDataHandler} />
-            <span>{outputText}</span>
+            <span>{output}</span>
 
         </Container>
     )

@@ -12,7 +12,7 @@ const AIForm = ({ allData }) => {
             fetch(`https://api.agify.io/?name=${name}`).then((res) => res.json())
         ])
             .then(([nationalizeData, genderizeData, agifyData]) => {
-                allData(nationalizeData, genderizeData, agifyData, name);
+                allData({nationalizeData, genderizeData, agifyData, name});
             })
     }
     const addNameHandler = event => setName(event.target.value)
