@@ -13,6 +13,7 @@ import FreeTime from './pages/FreeTime/FreeTime';
 import TodoPage from './pages/TodoPage/TodoPage';
 import ChuckNorrisJokesPage from './pages/ChuckNorrisJokesPage/ChuckNorrisJokesPage';
 import DogsPage from './pages/DogsPage/DogsPage';
+import AIPage from './pages/AIPage/AIPage';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/TodoPage' element={<TodoPage />} />
         <Route path='/ChuckNorrisJokesPage' element={<ChuckNorrisJokesPage />} />
         <Route path='/DogsPage' element={<DogsPage />} />
+        <Route path='/AIPage' element={<AIPage />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>
