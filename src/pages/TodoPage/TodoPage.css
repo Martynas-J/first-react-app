@@ -22,7 +22,7 @@
 .todo-input label{
     font-weight: 700;
 }
-form{
+.todo-form{
     padding: 20px;
     border-radius: 10px;
     background-color: aliceblue;

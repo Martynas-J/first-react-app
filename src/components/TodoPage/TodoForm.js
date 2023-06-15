@@ -56,7 +56,7 @@ const TodoForm = ({ onNewTodoHandler, editTodo }) => {
     setCreatedDate("");
   }
   return (
-    <form onSubmit={addTodoHandler}>
+    <form className="todo-form" onSubmit={addTodoHandler}>
       <div>To Do Form:</div>
       <div className='todo-input'>
         <label htmlFor={'title'}>Title:</label>

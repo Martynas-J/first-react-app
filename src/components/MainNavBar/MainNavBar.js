@@ -46,6 +46,9 @@ const MainNavBar = () => {
                 <li className='navigation-item'>
                     <NavLink to='/AIPage' className='navigation-link'>AI Page</NavLink>
                 </li>
+                <li className='navigation-item'>
+                    <NavLink to='/RandomUserPage' className='navigation-link'>Random User Page</NavLink>
+                </li>
                 
             </ul>
         </nav>

@@ -14,6 +14,7 @@ import TodoPage from './pages/TodoPage/TodoPage';
 import ChuckNorrisJokesPage from './pages/ChuckNorrisJokesPage/ChuckNorrisJokesPage';
 import DogsPage from './pages/DogsPage/DogsPage';
 import AIPage from './pages/AIPage/AIPage';
+import RandomUserPage from './pages/RandomUserPage/RandomUserPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path='/ChuckNorrisJokesPage' element={<ChuckNorrisJokesPage />} />
         <Route path='/DogsPage' element={<DogsPage />} />
         <Route path='/AIPage' element={<AIPage />} />
+        <Route path='/RandomUserPage' element={<RandomUserPage />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>
