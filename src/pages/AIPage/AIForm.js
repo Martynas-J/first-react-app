@@ -14,9 +14,6 @@ const AIForm = ({ allData }) => {
             .then(([nationalizeData, genderizeData, agifyData]) => {
                 allData(nationalizeData, genderizeData, agifyData, name);
             })
-            .catch((error) => {
-                console.log("Get DataAPI Error:", error);
-            });
     }
     const addNameHandler = event => setName(event.target.value)
     return (
