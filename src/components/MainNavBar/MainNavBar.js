@@ -37,6 +37,12 @@ const MainNavBar = () => {
                 <li className='navigation-item'>
                     <NavLink to='/TodoPage' className='navigation-link'>Todo Page</NavLink>
                 </li>
+                <li className='navigation-item'>
+                    <NavLink to='/ChuckNorrisJokesPage' className='navigation-link'>Chuck Norris Jokes</NavLink>
+                </li>
+                <li className='navigation-item'>
+                    <NavLink to='/DogsPage' className='navigation-link'>Dogs Page</NavLink>
+                </li>
                 
             </ul>
         </nav>

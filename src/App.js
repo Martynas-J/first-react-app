@@ -11,6 +11,8 @@ import ShopPage from './pages/shopPage/ShopPage';
 import Cities from './pages/CitiesPage/CitiesPage';
 import FreeTime from './pages/FreeTime/FreeTime';
 import TodoPage from './pages/TodoPage/TodoPage';
+import ChuckNorrisJokesPage from './pages/ChuckNorrisJokesPage/ChuckNorrisJokesPage';
+import DogsPage from './pages/DogsPage/DogsPage';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
         <Route path='/Cities' element={<Cities />} />
         <Route path='/FreeTime' element={<FreeTime />} />
         <Route path='/TodoPage' element={<TodoPage />} />
+        <Route path='/ChuckNorrisJokesPage' element={<ChuckNorrisJokesPage />} />
+        <Route path='/DogsPage' element={<DogsPage />} />
         <Route path='*' element={
           <div>
             <h1>Page not found</h1>
