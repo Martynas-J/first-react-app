@@ -7,7 +7,7 @@ import "./RandomUserPage.css"
 
 const RandomUserPage = () => {
 
-  const [userData, setUserData] = useState("")
+  const [usersData, setUsersData] = useState("")
   const [linkData, setLinkData] = useState("")
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const RandomUserPage = () => {
       console.log(userResults + userGender + userExtent)
       fetch(`https://randomuser.me/api/?${userResults}${userGender}${userExtent}`)
         .then(res => res.json())
-        .then(data => setUserData(data.results))
+        .then(data => setUsersData(data.results))
     }
   }, [linkData])
 
@@ -31,7 +31,7 @@ const RandomUserPage = () => {
     <Container>
       <h1>RandomUserPage</h1>
       <RandomUserForm onGetDat={getDataHandler} />
-      <RandomUserOutput userData={userData ? userData : []} />
+      <RandomUserOutput usersData={usersData ? usersData : []} />
 
     </Container>
 
