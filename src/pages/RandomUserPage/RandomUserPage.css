@@ -11,4 +11,21 @@
 .users-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+.extents-fieldset{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border: 2px solid black;
+}
+.random-user-form{
+    padding: 20px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    width: 300px;
+}
+.location-item{
+    
 }
