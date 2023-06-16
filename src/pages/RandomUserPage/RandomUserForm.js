@@ -1,26 +1,21 @@
 import { useEffect, useState } from "react"
 
 
-const RandomUserForm = ({onGetDat}) => {
+const RandomUserForm = ({ onGetDat }) => {
+
+    const extentsList = ["location", "email", "dob", "registered", "phone", "cell", "login"]
 
     const [quantity, setQuantity] = useState("")
     const [gender, setGender] = useState("")
-    const [extents, setExtents] = useState([])
+    const [extents, setExtents] = useState(extentsList)
     const [extent, setExtent] = useState("")
 
     let extentOption = ""
 
-    useEffect(() => {
-        fetch("https://randomuser.me/api/")
-            .then(res => res.json())
-            .then(data => {
-                Object.keys(data.results[0]).map(item => setExtents(prevState => [...prevState, item]))
-            })
-    }, [])
 
     const getDataHandler = (event) => {
         event.preventDefault()
-        onGetDat({quantity, gender, extent})
+        onGetDat({ quantity, gender, extent })
     }
 
     const addQuantityHandler = event => setQuantity(event.target.value)

@@ -1,11 +1,10 @@
 import UserDataItem from "./UserDataItem"
 
 
-const RandomUserOutput = ({ userData }) => {
-    console.log(userData)
+const RandomUserOutput = ({ usersData }) => {
     return (
         <div>
-            {userData.map((item, index) => {
+            {usersData.map((item, index) => {
                 return <UserDataItem
                     key={index}
                     userData={item} />
