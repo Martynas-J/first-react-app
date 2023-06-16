@@ -8,3 +8,7 @@
 .user-img{
     border-radius: 5px;
 }
+.users-wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}

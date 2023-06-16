@@ -3,7 +3,7 @@ import UserDataItem from "./UserDataItem"
 
 const RandomUserOutput = ({ usersData }) => {
     return (
-        <div>
+        <div className="users-wrapper">
             {usersData.map((item, index) => {
                 return <UserDataItem
                     key={index}

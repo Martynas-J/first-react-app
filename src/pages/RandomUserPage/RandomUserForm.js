@@ -12,10 +12,12 @@ const RandomUserForm = ({ onGetDat }) => {
 
     let extentOption = ""
 
-
     const getDataHandler = (event) => {
         event.preventDefault()
-        onGetDat({ quantity, gender, extent })
+        const userResults = quantity ? `&results=${quantity}` : ""
+        const userGender = gender ? `&gender=${gender}` : ""
+        const userExtent = extent ? `&inc=name, picture, ${extent}` : "&inc=name, picture"
+        onGetDat(`https://randomuser.me/api/?${userResults}${userGender}${userExtent}`)
     }
 
     const addQuantityHandler = event => setQuantity(event.target.value)

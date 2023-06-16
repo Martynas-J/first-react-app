@@ -7,17 +7,12 @@ import "./RandomUserPage.css"
 
 const RandomUserPage = () => {
 
-  const [usersData, setUsersData] = useState("")
+  const [usersData, setUsersData] = useState([])
   const [linkData, setLinkData] = useState("")
 
   useEffect(() => {
     if (linkData) {
-      const { quantity, gender, extent } = linkData
-      const userResults = quantity ? `&results=${quantity}` : ""
-      const userGender = gender ? `&gender=${gender}` : ""
-      const userExtent = extent ? `&inc=name, picture, ${extent}` : "&inc=name, picture"
-      console.log(userResults + userGender + userExtent)
-      fetch(`https://randomuser.me/api/?${userResults}${userGender}${userExtent}`)
+      fetch(linkData)
         .then(res => res.json())
         .then(data => setUsersData(data.results))
     }
@@ -31,7 +26,7 @@ const RandomUserPage = () => {
     <Container>
       <h1>RandomUserPage</h1>
       <RandomUserForm onGetDat={getDataHandler} />
-      <RandomUserOutput usersData={usersData ? usersData : []} />
+      <RandomUserOutput usersData={usersData} />
 
     </Container>
 
