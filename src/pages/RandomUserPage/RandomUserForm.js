@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-const RandomUserForm = () => {
+const RandomUserForm = ({onGetDat}) => {
 
     const [quantity, setQuantity] = useState("")
     const [gender, setGender] = useState("")
@@ -20,9 +20,7 @@ const RandomUserForm = () => {
 
     const getDataHandler = (event) => {
         event.preventDefault()
-        console.log(quantity)
-        console.log(gender)
-        console.log(extent)
+        onGetDat({quantity, gender, extent})
     }
 
     const addQuantityHandler = event => setQuantity(event.target.value)
