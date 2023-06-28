@@ -85,6 +85,7 @@ const RandomUserForm = ({ onGetDat }) => {
             </div>
             {extents.length > 0 ?
                 <div className="input-content">
+                    
                     <select value={extent} onChange={getExtentHandler}>
                         <option value="" disabled>--Including--</option>
                         {extentOption}
